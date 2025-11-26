@@ -67,5 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
+    "Rusty-Moon.slnx=======dotnet.defaultSolution": "Roting Moon.slnx>>>>>>>1bd1d80cccdea04015bbfe0521a9ec09bbff967f",
     "dotnet.defaultSolution": "Rusty-Moon.slnx"
 }
