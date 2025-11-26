@@ -54,7 +54,7 @@ public class BoomerangController : MonoBehaviour
         // Point de courbure ALLER (à droite par exemple)
         curvePoint = startPosition + (playerCamera.forward * (distance / 2)) + (playerCamera.right * sideArc);
         
-        // Point de courbure RETOUR (à l'opposé, donc à gauche)
+        // Point de courbure RETOUR 
         // On le calcule dès maintenant pour définir la forme globale de la boucle
         returnCurvePoint = startPosition + (playerCamera.forward * (distance / 2)) - (playerCamera.right * sideArc);
     }
@@ -69,7 +69,7 @@ public class BoomerangController : MonoBehaviour
         if (!isReturning)
         {
             // --- PHASE ALLER ---
-            // Courbe de Bézier : Départ -> curvePoint -> Cible
+            // Courbe de Bézier : Départ / curvePoint / Cible
             transform.position = CalculateBezierPoint(flightTime, startPosition, curvePoint, targetPosition);
 
             if (flightTime >= 1f)
@@ -80,12 +80,7 @@ public class BoomerangController : MonoBehaviour
         }
         else
         {
-            // --- PHASE RETOUR ---
-            // C'est ici que ça change ! 
-            // Au lieu d'une ligne droite, on refait une courbe.
-            // Départ du retour = targetPosition
-            // Point intermédiaire = returnCurvePoint (l'opposé de l'aller)
-            // Arrivée = playerHand.position (la main actuelle)
+   
             
             transform.position = CalculateBezierPoint(flightTime, targetPosition, returnCurvePoint, playerHand.position);
 
@@ -106,8 +101,7 @@ public class BoomerangController : MonoBehaviour
 
     Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 p1, Vector3 p2)
     {
-        // Formule mathématique de la courbe de Bézier quadratique
-        // B(t) = (1-t)²P0 + 2(1-t)tP1 + t²P2
+  
         
         // On limite t entre 0 et 1 pour éviter les bugs
         t = Mathf.Clamp01(t);
