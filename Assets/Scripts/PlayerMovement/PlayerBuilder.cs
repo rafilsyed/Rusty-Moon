@@ -20,20 +20,21 @@ public class PlayerBuilder : MonoBehaviour
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, distanceConstruction))
+       
+            if (Physics.Raycast(ray, out hit, distanceConstruction, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide))
         {
             if (hit.collider.name.Contains("SnapPoint"))
             {
             
                 Vector3 futurePosition = hit.collider.transform.position;
 
-                if (Physics.CheckSphere(futurePosition, 1.5f, -1, QueryTriggerInteraction.Ignore))
+                if (Physics.CheckSphere(futurePosition, 0.4f, -1, QueryTriggerInteraction.Ignore))
                 {
                     Debug.Log("Impossible : Il y a déjà un radeau ici !");
                 
                     Destroy(hit.collider.gameObject); 
                     return; 
-                    
+
                 }
                 Rigidbody mainRaft = hit.collider.GetComponentInParent<Rigidbody>();
 
