@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tomato
   m_EditorClassIdentifier: Assembly-CSharp::InventoryItemData
   ID: 0
-  DisplayName: 
+  DisplayName: Tomato
   Description: 
-  Icon: {fileID: 0}
-  MaxStackSize: 0
+  Icon: {fileID: 21300000, guid: 6edb79a2902587b468a87fbbee63488b, type: 3}
+  MaxStackSize: 64

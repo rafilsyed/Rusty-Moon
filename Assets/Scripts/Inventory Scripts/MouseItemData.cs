@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class MouseItemData : MonoBehaviour
@@ -20,5 +21,14 @@ public class MouseItemData : MonoBehaviour
         itemSprite.sprite = invSlot.ItemData.Icon;
         ItemCount.text = invSlot.StackSize.ToString();
         itemSprite.color = Color.white;
+    }
+
+    private void Update()
+    {
+        if(AssignedInventorySlot != null)
+        {
+            transform.position =  Mouse.current.position.ReadValue();
+            
+        }
     }
 }
