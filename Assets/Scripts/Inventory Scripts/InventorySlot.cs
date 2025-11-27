@@ -6,7 +6,7 @@ public class InventorySlot
     [SerializeField] private InventoryItemData itemData;
     [SerializeField] private int stackSize;
 
-    public InventoryItemData Data => itemData;
+    public InventoryItemData ItemData => itemData;
     public int StackSize => stackSize;
 
     public InventorySlot(InventoryItemData source, int amount)
@@ -23,7 +23,13 @@ public class InventorySlot
     public void ClearSlot()
     {
         itemData = null;
-        stackSize = 0;
+        stackSize = -1;
+    }
+
+    public void UpdateInventorySlot(InventoryItemData source, int amount)
+    {
+        itemData = source;
+        stackSize = amount;
     }
 
     public bool RoomLeftInStack(int amountToAdd, out int amountRemaining)
