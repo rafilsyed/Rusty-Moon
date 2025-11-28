@@ -27,7 +27,7 @@ public class InventorySystem
         if(ContainsItem(itemToAdd, out List<InventorySlot> invSlot)) // Item already exists in inventory
         {
             foreach(var slot in invSlot){
-                if(slot.RoomLeftInStack(amountToAdd))
+                if(slot.EnoughRoomLeftInStack(amountToAdd))
                 {
                     slot.AddToStack(amountToAdd);
                     OnInventorySlotChanged?.Invoke(slot);
@@ -38,9 +38,12 @@ public class InventorySystem
 
         if(HasFreeSlot(out InventorySlot freeSlot)) // Find a free slot
         {
-            freeSlot.UpdateInventorySlot(itemToAdd, amountToAdd);
-            OnInventorySlotChanged?.Invoke(freeSlot);
-            return true;
+            if(freeSlot.EnoughRoomLeftInStack(amountToAdd))
+            {
+                freeSlot.UpdateInventorySlot(itemToAdd, amountToAdd);
+                OnInventorySlotChanged?.Invoke(freeSlot);
+                return true;
+            }
         }
 
         return false;
@@ -49,7 +52,6 @@ public class InventorySystem
     public bool ContainsItem(InventoryItemData itemToAdd, out List<InventorySlot> invSlot)
     {
         invSlot = InventorySlots.Where(i => i.ItemData == itemToAdd).ToList();
-        Debug.Log("Found " + invSlot.Count + " slots with item " + itemToAdd.DisplayName);
         return invSlot.Count > 0;
     }
 

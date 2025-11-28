@@ -38,17 +38,14 @@ public abstract class InventoryDisplay : MonoBehaviour
         if (clickedUISlot.AssignedInventorySlot.ItemData != null && mouseInventoryItem.AssignedInventorySlot.ItemData == null)
         {
 
-            Debug.Log("Clicked slot has item, mouse slot is empty.");
             if(isShiftPressed && clickedUISlot.AssignedInventorySlot.SplitStack(out InventorySlot halfStackSlot))
             {
-                Debug.Log("Splitting stack.");
                 mouseInventoryItem.UpdateMouseSlot(halfStackSlot);
                 clickedUISlot.UpdateUISlot();
                 return;
             }
             else
             {
-                Debug.Log("Moving entire stack.");
                 mouseInventoryItem.UpdateMouseSlot(clickedUISlot.AssignedInventorySlot);
                 clickedUISlot.ClearSlot();
                 return;
@@ -57,7 +54,6 @@ public abstract class InventoryDisplay : MonoBehaviour
 
         if(clickedUISlot.AssignedInventorySlot.ItemData == null && mouseInventoryItem.AssignedInventorySlot.ItemData != null)
         {
-            Debug.Log("Clicked slot is empty, mouse slot has item.");
             clickedUISlot.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
             clickedUISlot.UpdateUISlot();
             mouseInventoryItem.ClearSlot();
@@ -66,12 +62,10 @@ public abstract class InventoryDisplay : MonoBehaviour
 
         if(clickedUISlot.AssignedInventorySlot.ItemData != null && mouseInventoryItem.AssignedInventorySlot.ItemData != null)
         {   
-            Debug.Log("Both clicked slot and mouse slot have items.");
             bool isSameItem = clickedUISlot.AssignedInventorySlot.ItemData == mouseInventoryItem.AssignedInventorySlot.ItemData;
 
-            if(isSameItem && clickedUISlot.AssignedInventorySlot.RoomLeftInStack(mouseInventoryItem.AssignedInventorySlot.StackSize))
+            if(isSameItem && clickedUISlot.AssignedInventorySlot.EnoughRoomLeftInStack(mouseInventoryItem.AssignedInventorySlot.StackSize))
             {
-                Debug.Log("Same item and room in stack.");
                 clickedUISlot.AssignedInventorySlot.AssignItem(mouseInventoryItem.AssignedInventorySlot);
                 clickedUISlot.UpdateUISlot();
             
@@ -79,18 +73,15 @@ public abstract class InventoryDisplay : MonoBehaviour
                 return;
             }
             else if (isSameItem &&
-            !clickedUISlot.AssignedInventorySlot.RoomLeftInStack(mouseInventoryItem.AssignedInventorySlot.StackSize, out int leftInStack))
+            !clickedUISlot.AssignedInventorySlot.EnoughRoomLeftInStack(mouseInventoryItem.AssignedInventorySlot.StackSize, out int leftInStack))
             {
-                Debug.Log("Same item but not enough room in stack.");
                 if (leftInStack < 1)
                 {
-                    Debug.Log("No room left in stack, swapping slots.");
                     SwapSlots(clickedUISlot);
                     return;
                 }
                 else
                 {
-                    Debug.Log("Partial room left in stack, adding what we can.");
                     int remainingOnMouse = mouseInventoryItem.AssignedInventorySlot.StackSize - leftInStack;
                     clickedUISlot.AssignedInventorySlot.AddToStack(leftInStack);
                     clickedUISlot.UpdateUISlot();
@@ -104,7 +95,6 @@ public abstract class InventoryDisplay : MonoBehaviour
             }
             else if (!isSameItem)
             {
-                Debug.Log("Different items, swapping slots.");
                 SwapSlots(clickedUISlot);
                 return;
             }
