@@ -5,7 +5,7 @@ public class PlayerBuilder : MonoBehaviour
     [Header("Réglages")]
     public GameObject raftPrefab;
     public float distanceConstruction = 15f;
-    public KeyCode toucheConstruction = KeyCode.E;
+    public KeyCode toucheConstruction = KeyCode.F;
 
     void Update()
     {
