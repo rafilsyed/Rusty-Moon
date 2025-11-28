@@ -225,9 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 92722797}
-  - component: {fileID: 92722796}
   - component: {fileID: 92722795}
-  - component: {fileID: 92722798}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -247,30 +245,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72832709cb35fbc4eb4c03e78f06f062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectSpawner
+  joueur: {fileID: 1604148491}
+  hauteurAuDessus: 10
   objetAPop: {fileID: 3970495607890225637, guid: e83c0be8345c7ae43bdfce9f1447c1cd, type: 3}
   dureeDeVie: 5
-  hauteurApparition: 30
-  intervalleTemps: 1
   largeurZone: 10
   profondeurZone: 10
---- !u!114 &92722796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92722794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72832709cb35fbc4eb4c03e78f06f062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObjectSpawner
-  objetAPop: {fileID: 0}
-  dureeDeVie: 5
-  hauteurApparition: 10
   intervalleTemps: 1
-  largeurZone: 5
-  profondeurZone: 5
 --- !u!4 &92722797
 Transform:
   m_ObjectHideFlags: 0
@@ -286,20 +267,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &92722798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92722794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe65d27e48004cd4bbbb9ea78de758c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpawnerFollower
-  player: {fileID: 1604148491}
-  hauteurSpawner: 30
 --- !u!4 &117977653 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: acc1cd911fed24514b27a0cd7159c9a0, type: 3}
