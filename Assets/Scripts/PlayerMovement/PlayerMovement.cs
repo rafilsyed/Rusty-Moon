@@ -6,6 +6,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Camera playerCamera;
+    
+    [Header("Animation")] 
+    public Animator animator; // Glisse ton objet "Zaun_Character" ici
+
+    [Header("Réglages Mouvement")]
     public float walkSpeed = 6f;
     public float runSpeed = 12f;
     public float jumpPower = 7f;
@@ -42,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
             Cursor.lockState = cursorVisible ? CursorLockMode.None : CursorLockMode.Locked;
 
             canMove = !cursorVisible;
+            
+            if (!canMove && animator != null) animator.SetFloat("Vitesse", 0f);
         }
 
         // Empêche le mouvement si curseur visible
@@ -52,12 +59,30 @@ public class PlayerMovement : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
+        float inputHorizontal = Input.GetAxis("Horizontal"); 
+        float inputVertical = Input.GetAxis("Vertical");     
+
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        float curSpeedX = (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical");
-        float curSpeedY = (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal");
+        
+        float curSpeedX = (isRunning ? runSpeed : walkSpeed) * inputVertical;
+        float curSpeedY = (isRunning ? runSpeed : walkSpeed) * inputHorizontal;
         float movementDirectionY = moveDirection.y;
 
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+
+        if (animator != null)
+        {
+           
+            float animationSpeed = new Vector2(inputHorizontal, inputVertical).magnitude;
+            animator.SetFloat("Vitesse", animationSpeed);
+
+           
+            if (Input.GetMouseButtonDown(0))
+            {
+                animator.SetTrigger("Lancer");
+            }
+        }
+        // ---------------------------------------------------------
 
         if (Input.GetButton("Jump") && characterController.isGrounded)
         {
