@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Camera playerCamera;
-    
-    [Header("Animation")] 
+
+    [Header("Animation")]
     public Animator animator; // Glisse ton objet "Zaun_Character" ici
 
     [Header("Réglages Mouvement")]
@@ -26,8 +26,10 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     private bool canMove = true;
 
-    // Toggle du curseur
-    private bool cursorVisible = false;
+    public void SetCanMove(bool value)
+    {
+        canMove = value;
+    }
 
     void Start()
     {
@@ -38,19 +40,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // ----- Toggle curseur avec C -----
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            cursorVisible = !cursorVisible;
-
-            Cursor.visible = cursorVisible;
-            Cursor.lockState = cursorVisible ? CursorLockMode.None : CursorLockMode.Locked;
-
-            canMove = !cursorVisible;
-            
-            if (!canMove && animator != null) animator.SetFloat("Vitesse", 0f);
-        }
-
         // Empêche le mouvement si curseur visible
         if (!canMove)
             return;
@@ -59,11 +48,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
-        float inputHorizontal = Input.GetAxis("Horizontal"); 
-        float inputVertical = Input.GetAxis("Vertical");     
+        float inputHorizontal = Input.GetAxis("Horizontal");
+        float inputVertical = Input.GetAxis("Vertical");
 
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        
+
         float curSpeedX = (isRunning ? runSpeed : walkSpeed) * inputVertical;
         float curSpeedY = (isRunning ? runSpeed : walkSpeed) * inputHorizontal;
         float movementDirectionY = moveDirection.y;
@@ -72,11 +61,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (animator != null)
         {
-           
+
             float animationSpeed = new Vector2(inputHorizontal, inputVertical).magnitude;
             animator.SetFloat("Vitesse", animationSpeed);
 
-           
+
             if (Input.GetMouseButtonDown(0))
             {
                 animator.SetTrigger("Lancer");

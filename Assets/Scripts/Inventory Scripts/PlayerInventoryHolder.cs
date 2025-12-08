@@ -19,7 +19,7 @@ public class PlayerInventoryHolder : InventoryHolder
 
     void Update()
     {
-        if (Keyboard.current.bKey.wasPressedThisFrame)
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             OnPlayerBackPackDisplayRequested?.Invoke(secondaryInventorySystem);
         }
