@@ -2535,28 +2535,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryHolder
   inventorySize: 10
-  inventorySystem:
-    inventorySlots:
-    - itemData: {fileID: 0}
-      stackSize: 0
-    - itemData: {fileID: 0}
-      stackSize: 0
-    - itemData: {fileID: 0}
-      stackSize: 0
-    - itemData: {fileID: 0}
-      stackSize: 0
-    - itemData: {fileID: 0}
-      stackSize: 0
-    - itemData: {fileID: 0}
-      stackSize: 0
-    - itemData: {fileID: 0}
-      stackSize: 0
-    - itemData: {fileID: 0}
-      stackSize: 0
-    - itemData: {fileID: 0}
-      stackSize: 0
-    - itemData: {fileID: 0}
-      stackSize: 0
+  primaryInventorySystem:
+    inventorySlots: []
 --- !u!1 &1607418944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2946,6 +2926,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 9121822884451062387, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
     - {fileID: 5047910759403582163, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
+    - {fileID: 5510470789320472965, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
