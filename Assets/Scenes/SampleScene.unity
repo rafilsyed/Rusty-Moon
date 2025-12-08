@@ -248,7 +248,7 @@ MonoBehaviour:
   joueur: {fileID: 1604148491}
   hauteurAuDessus: 10
   objetAPop: {fileID: 3970495607890225637, guid: e83c0be8345c7ae43bdfce9f1447c1cd, type: 3}
-  dureeDeVie: 5
+  dureeDeVie: 12
   largeurZone: 10
   profondeurZone: 10
   intervalleTemps: 1
@@ -3373,6 +3373,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 9121822884451062387, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
     - {fileID: 5047910759403582163, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
+    - {fileID: 5510470789320472965, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
