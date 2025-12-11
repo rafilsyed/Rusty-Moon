@@ -10938,8 +10938,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBuilder
   raftPrefab: {fileID: 5266912476423913197, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
-  distanceConstruction: 5
-  toucheConstruction: 101
+  distanceConstruction: 15
+  toucheConstruction: 102
 --- !u!4 &331340078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 438233409658300652, guid: 6cfa5debf019806499753d3cb6bcafd6, type: 3}
@@ -27725,7 +27725,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867274459}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

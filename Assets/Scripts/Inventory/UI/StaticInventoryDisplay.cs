@@ -6,7 +6,28 @@ public class StaticInventoryDisplay : InventoryDisplay
     [SerializeField] private InventoryHolder inventoryHolder;
     [SerializeField] private InventorySlot_UI[] slots;
 
-    private int currentSelectedSlotIndex = 0;
+    private int currentSelectedSlotIndex = -1;
+
+    public InventoryItemData GetCurrentItem()
+    {
+        if (currentSelectedSlotIndex < 0 || currentSelectedSlotIndex >= slots.Length)
+        {
+            return null;
+        }
+
+        InventorySlot selectedInventorySlot = slots[currentSelectedSlotIndex].AssignedInventorySlot;
+        return selectedInventorySlot.ItemData;
+    }
+
+    public InventorySlot GetCurrentInventorySlot()
+    {
+        if (currentSelectedSlotIndex < 0 || currentSelectedSlotIndex >= slots.Length)
+        {
+            return null;
+        }
+
+        return slots[currentSelectedSlotIndex].AssignedInventorySlot;
+    }
 
     public int GetCurrentIndex()
     {
@@ -17,7 +38,7 @@ public class StaticInventoryDisplay : InventoryDisplay
     {
         return slots.Length;
     }
-    
+
     protected override void Start()
     {
         base.Start();
@@ -27,10 +48,10 @@ public class StaticInventoryDisplay : InventoryDisplay
             inventorySystem = inventoryHolder.PrimaryInventorySystem;
             inventorySystem.OnInventorySlotChanged += UpdateSlot;
         }
-        
+
         AssignSlot(inventorySystem);
-        
-        SetIndexActive(0); 
+
+        SetIndexActive(0);
     }
 
     public override void AssignSlot(InventorySystem invToDisplay)

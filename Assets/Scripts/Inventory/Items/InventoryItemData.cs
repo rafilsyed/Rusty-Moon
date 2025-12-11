@@ -9,4 +9,10 @@ public class InventoryItemData : ScriptableObject
     public string Description;
     public Sprite Icon;
     public int MaxStackSize; 
+
+    public virtual bool UseItem()
+    {
+        Debug.Log($"Utilisation de: {DisplayName}");
+        return true; 
+    }
 }
