@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Camera playerCamera;
 
     [Header("Animation")]
-    public Animator animator; // Glisse ton objet "Zaun_Character" ici
+    public Animator animator; 
 
     [Header("Réglages Mouvement")]
     public float walkSpeed = 6f;
@@ -40,11 +40,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Empêche le mouvement si curseur visible
         if (!canMove)
             return;
 
-        // ----- Mouvements -----
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
@@ -59,19 +57,25 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
+        // --- DEBUT DE LA MODIFICATION ---
         if (animator != null)
         {
+            // Calcule si on bouge (Vrai si on appuie sur Z,Q,S ou D)
+            bool playerIsMoving = (inputHorizontal != 0 || inputVertical != 0);
+            
+            // Active l'animation si on bouge
+            animator.SetBool("IsRunning", playerIsMoving);
 
+            // (Optionnel) Garde ta logique existante si tu veux l'utiliser plus tard
             float animationSpeed = new Vector2(inputHorizontal, inputVertical).magnitude;
             animator.SetFloat("Vitesse", animationSpeed);
-
 
             if (Input.GetMouseButtonDown(0))
             {
                 animator.SetTrigger("Lancer");
             }
         }
-        // ---------------------------------------------------------
+        // --- FIN DE LA MODIFICATION ---
 
         if (Input.GetButton("Jump") && characterController.isGrounded)
         {
@@ -87,7 +91,6 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
-        // ----- Accroupissement -----
         if (Input.GetKey(KeyCode.R))
         {
             characterController.height = crouchHeight;
@@ -103,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
 
         characterController.Move(moveDirection * Time.deltaTime);
 
-        // ----- Rotation caméra + joueur -----
         rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
