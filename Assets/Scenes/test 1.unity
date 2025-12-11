@@ -22717,11 +22717,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 438233409658300652, guid: 6cfa5debf019806499753d3cb6bcafd6, type: 3}
   m_PrefabInstance: {fileID: 755454016}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &706964380 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e182ad462e799914e816d3732c374642, type: 3}
-  m_PrefabInstance: {fileID: 1440571766}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &707201315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 438233409658300652, guid: 6cfa5debf019806499753d3cb6bcafd6, type: 3}
@@ -39659,21 +39654,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5266912476423913197, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
   m_PrefabInstance: {fileID: 4246224938668015631}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1230598486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1230598482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfa923c30d90fc543b023ccd2edbdeef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
-  PickUpRadius: 1
-  ItemData: {fileID: 11400000, guid: bf52d3efceff6cf4a84b000d82903c78, type: 2}
-  pickUpSound: {fileID: 8300000, guid: f847f138fb0c18f45b27d737647e7812, type: 3}
 --- !u!135 &1230598487
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -45998,67 +45978,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 438233409658300652, guid: 6cfa5debf019806499753d3cb6bcafd6, type: 3}
   m_PrefabInstance: {fileID: 1595707368}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1440571766
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1604148491}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: e182ad462e799914e816d3732c374642, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e182ad462e799914e816d3732c374642, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e182ad462e799914e816d3732c374642, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e182ad462e799914e816d3732c374642, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e182ad462e799914e816d3732c374642, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e182ad462e799914e816d3732c374642, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e182ad462e799914e816d3732c374642, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e182ad462e799914e816d3732c374642, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e182ad462e799914e816d3732c374642, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: e182ad462e799914e816d3732c374642, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: e182ad462e799914e816d3732c374642, type: 3}
-      propertyPath: m_Name
-      value: Zaun_toxic_wasteland__1127224039_texture
-      objectReference: {fileID: 0}
-    - target: {fileID: 2664098864995057252, guid: e182ad462e799914e816d3732c374642, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cd95ca396814d5b4aa663bc68bb79f0b, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e182ad462e799914e816d3732c374642, type: 3}
 --- !u!1001 &1441380014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51314,6 +51233,7 @@ GameObject:
   - component: {fileID: 1604148489}
   - component: {fileID: 1604148493}
   - component: {fileID: 1604148494}
+  - component: {fileID: 1604148495}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -51383,7 +51303,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1797426225}
-  - {fileID: 706964380}
   - {fileID: 176104131}
   - {fileID: 330585546}
   - {fileID: 1659873692}
@@ -51424,6 +51343,19 @@ MonoBehaviour:
   secondaryInventorySize: 30
   secondaryInventorySystem:
     inventorySlots: []
+--- !u!114 &1604148495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604148488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f8c3d04e390944692aae93ad0463e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HotbarController
+  hotbarDisplay: {fileID: 1055220611}
 --- !u!1 &1607418944
 GameObject:
   m_ObjectHideFlags: 0
@@ -68121,9 +68053,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5266912476423913197, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1230598487}
-    - targetCorrespondingSourceObject: {fileID: 5266912476423913197, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1230598486}
   m_SourcePrefab: {fileID: 100100000, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
 --- !u!1001 &4341941304049368603
 PrefabInstance:
