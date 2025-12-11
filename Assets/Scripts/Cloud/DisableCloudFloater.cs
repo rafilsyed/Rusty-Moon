@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class disable_cloud_floater : MonoBehaviour
+public class DisableCloudFloater : MonoBehaviour
 {
     [Header("Réglages")]
     public float tempsAvantArret = 5.0f;
