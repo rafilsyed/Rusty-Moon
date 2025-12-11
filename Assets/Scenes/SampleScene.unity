@@ -579,7 +579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBuilder
   raftPrefab: {fileID: 5266912476423913197, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
   distanceConstruction: 5
-  toucheConstruction: 101
+  toucheConstruction: 102
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
