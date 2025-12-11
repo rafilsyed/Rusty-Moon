@@ -66,10 +66,6 @@ public class PlayerMovement : MonoBehaviour
             // Active l'animation si on bouge
             animator.SetBool("IsRunning", playerIsMoving);
 
-            // (Optionnel) Garde ta logique existante si tu veux l'utiliser plus tard
-            float animationSpeed = new Vector2(inputHorizontal, inputVertical).magnitude;
-            animator.SetFloat("Vitesse", animationSpeed);
-
             if (Input.GetMouseButtonDown(0))
             {
                 animator.SetTrigger("Lancer");

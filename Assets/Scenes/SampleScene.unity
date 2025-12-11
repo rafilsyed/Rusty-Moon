@@ -321,7 +321,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -2530251679569251172, guid: 1bcc2018c0395814c9470c2a626abedf, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 738079406}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1bcc2018c0395814c9470c2a626abedf, type: 3}
       insertIndex: -1
@@ -348,37 +351,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb3b8621faa49049bb2e77533e39098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlot_UI
---- !u!1 &176104130
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 176104131}
-  m_Layer: 0
-  m_Name: Main
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &176104131
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176104130}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.302, y: 0.422, z: 0.755}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1604148491}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &254844471 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8478723820723777225, guid: d22e2fda6f0b0c84397ef84ef6becb0f, type: 3}
@@ -580,6 +552,11 @@ MonoBehaviour:
   raftPrefab: {fileID: 5266912476423913197, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
   distanceConstruction: 5
   toucheConstruction: 101
+--- !u!4 &405784219 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2530251679569251172, guid: 1bcc2018c0395814c9470c2a626abedf, type: 3}
+  m_PrefabInstance: {fileID: 114604962}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,7 +1126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3896c25a116a4e72815c990320d9972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoomerangController
-  playerHand: {fileID: 176104131}
+  playerHand: {fileID: 1667607289}
   playerCamera: {fileID: 330585546}
   modelVisuel: {fileID: 1607418945}
   axeDeRotation: {x: 0, y: 1, z: 0}
@@ -1168,13 +1145,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738079404}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.326, y: 0.311, z: 5.342}
+  m_LocalRotation: {x: 0.4810439, y: 0.5093141, z: -0.5275984, w: -0.48045388}
+  m_LocalPosition: {x: 0.005, y: -0.061, z: 0.001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1607418945}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 405784219}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &743442676
 PrefabInstance:
@@ -2534,7 +2511,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 656685318}
-  - {fileID: 176104131}
   - {fileID: 330585546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2698,6 +2674,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb3b8621faa49049bb2e77533e39098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventorySlot_UI
+--- !u!4 &1667607289 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5473560659282289409, guid: 1bcc2018c0395814c9470c2a626abedf, type: 3}
+  m_PrefabInstance: {fileID: 114604962}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1686999413
 GameObject:
   m_ObjectHideFlags: 0
@@ -3157,7 +3138,6 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 1604148491}
   - {fileID: 1163367005}
-  - {fileID: 738079406}
   - {fileID: 2104624368}
   - {fileID: 867274462}
   - {fileID: 994223748}
