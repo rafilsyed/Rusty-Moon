@@ -7,19 +7,23 @@ public class InventorySlot_UI : MonoBehaviour
     [SerializeField] private Image itemSprite;
     [SerializeField] private TextMeshProUGUI itemCount;
     [SerializeField] private InventorySlot assignedInventorySlot;
+    
+    [Header("Selection")]
+    [SerializeField] private Image slotHighlight; 
 
     private Button button;
 
     public InventorySlot AssignedInventorySlot => assignedInventorySlot;
     public InventoryDisplay ParentDisplay { get; private set; }
-    
+
     private void Awake()
     {
         ClearSlot();
+        
+        if(slotHighlight != null) ToggleHighlight(false);
 
         button = GetComponent<Button>();
         button?.onClick.AddListener(OnUISlotClick);
-
         ParentDisplay = transform.parent.GetComponent<InventoryDisplay>();
     }
 
@@ -30,16 +34,15 @@ public class InventorySlot_UI : MonoBehaviour
     }
 
     public void UpdateUISlot(InventorySlot slot)
-    { 
+    {
         if (slot.ItemData != null)
         {
             itemSprite.sprite = slot.ItemData.Icon;
             itemSprite.color = Color.white;
-
-            if(slot.StackSize > 1) itemCount.text = slot.StackSize.ToString();
+            if (slot.StackSize > 1) itemCount.text = slot.StackSize.ToString();
             else itemCount.text = "";
         }
-        else 
+        else
         {
             ClearSlot();
         }
@@ -47,10 +50,7 @@ public class InventorySlot_UI : MonoBehaviour
 
     public void UpdateUISlot()
     {
-        if (assignedInventorySlot != null)
-        {
-            UpdateUISlot(assignedInventorySlot);
-        }
+        if (assignedInventorySlot != null) UpdateUISlot(assignedInventorySlot);
     }
 
     public void ClearSlot()
@@ -64,5 +64,10 @@ public class InventorySlot_UI : MonoBehaviour
     public void OnUISlotClick()
     {
         ParentDisplay?.SlotClicked(this);
+    }
+
+    public void ToggleHighlight(bool val)
+    {
+        if (slotHighlight != null) slotHighlight.enabled = val;
     }
 }
