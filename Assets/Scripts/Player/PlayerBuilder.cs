@@ -5,17 +5,8 @@ public class PlayerBuilder : MonoBehaviour
     [Header("Réglages")]
     public GameObject raftPrefab;
     public float distanceConstruction = 15f;
-    public KeyCode toucheConstruction = KeyCode.F;
-
-    void Update()
-    {
-        if (Input.GetKeyDown(toucheConstruction))
-        {
-            RegarderEtConstruire();
-        }
-    }
-
-    void RegarderEtConstruire()
+    
+    public bool RegarderEtConstruire()
     {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
@@ -33,7 +24,7 @@ public class PlayerBuilder : MonoBehaviour
                     Debug.Log("Impossible : Il y a déjà un radeau ici !");
                 
                     Destroy(hit.collider.gameObject); 
-                    return; 
+                    return false; 
 
                 }
                 Rigidbody mainRaft = hit.collider.GetComponentInParent<Rigidbody>();
@@ -45,8 +36,11 @@ public class PlayerBuilder : MonoBehaviour
                     nouveauMorceau.transform.SetParent(mainRaft.transform);
                     Destroy(nouveauMorceau.GetComponent<Rigidbody>());
                     Destroy(hit.collider.gameObject);
+                    return true;
                 }
             }
         }
+
+        return false;
     }
 }

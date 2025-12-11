@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ad64c89e41b34409073be076924d9d, type: 3}
+  m_Script: {fileID: 11500000, guid: b0d27da68c6e9b44ba2a581329f016fd, type: 3}
   m_Name: Raft
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryItemData
+  m_EditorClassIdentifier: Assembly-CSharp::RaftPieceItemData
   ID: 0
   DisplayName: Raft
   Description: 
