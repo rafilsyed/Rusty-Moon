@@ -1074,7 +1074,7 @@ GameObject:
   m_Component:
   - component: {fileID: 646442213}
   m_Layer: 0
-  m_Name: testboome
+  m_Name: HANDFORITEMS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
