@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Camera playerCamera;
 
     [Header("Animation")]
-    public Animator animator; 
+    public Animator animator;
 
     [Header("Réglages Mouvement")]
     public float walkSpeed = 6f;
@@ -40,40 +40,43 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!canMove)
-            return;
-
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
-        float inputHorizontal = Input.GetAxis("Horizontal");
-        float inputVertical = Input.GetAxis("Vertical");
+        float inputHorizontal = 0f;
+        float inputVertical = 0f;
+        bool isRunning = false;
 
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        if (canMove)
+        {
+            inputHorizontal = Input.GetAxis("Horizontal");
+            inputVertical = Input.GetAxis("Vertical");
+            isRunning = Input.GetKey(KeyCode.LeftShift);
+
+            // --- Animation ---
+            if (animator != null)
+            {
+                bool playerIsMoving = (inputHorizontal != 0 || inputVertical != 0);
+                animator.SetBool("IsRunning", playerIsMoving);
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    animator.SetTrigger("Lancer");
+                }
+            }
+        }
 
         float curSpeedX = (isRunning ? runSpeed : walkSpeed) * inputVertical;
         float curSpeedY = (isRunning ? runSpeed : walkSpeed) * inputHorizontal;
         float movementDirectionY = moveDirection.y;
 
-        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        // Si canMove = false, on n'applique PAS la vitesse horizontale
+        moveDirection = canMove ?
+            (forward * curSpeedX) + (right * curSpeedY) :
+            new Vector3(0, movementDirectionY, 0);
 
-        // --- DEBUT DE LA MODIFICATION ---
-        if (animator != null)
-        {
-            // Calcule si on bouge (Vrai si on appuie sur Z,Q,S ou D)
-            bool playerIsMoving = (inputHorizontal != 0 || inputVertical != 0);
-            
-            // Active l'animation si on bouge
-            animator.SetBool("IsRunning", playerIsMoving);
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                animator.SetTrigger("Lancer");
-            }
-        }
-        // --- FIN DE LA MODIFICATION ---
-
-        if (Input.GetButton("Jump") && characterController.isGrounded)
+        // Jump uniquement si on peut bouger
+        if (canMove && Input.GetButton("Jump") && characterController.isGrounded)
         {
             moveDirection.y = jumpPower;
         }
@@ -82,12 +85,14 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.y = movementDirectionY;
         }
 
+        // --- Gravité active même quand canMove = false ---
         if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.R))
+        // Crouch seulement si canMove
+        if (canMove && Input.GetKey(KeyCode.R))
         {
             characterController.height = crouchHeight;
             walkSpeed = crouchSpeed;
@@ -102,10 +107,14 @@ public class PlayerMovement : MonoBehaviour
 
         characterController.Move(moveDirection * Time.deltaTime);
 
-        rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-        rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        // Rotation caméra et joueur UNIQUEMENT si canMove
+        if (canMove)
+        {
+            rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
+            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
 
-        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+        }
     }
 }

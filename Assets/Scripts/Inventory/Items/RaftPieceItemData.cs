@@ -9,7 +9,6 @@ public class RaftPieceItemData : InventoryItemData
         
         if (builder == null)
         {
-            Debug.LogError("RaftPieceItemData: Le PlayerBuilder n'est pas trouvé dans la scène.");
             return false;
         }
 
