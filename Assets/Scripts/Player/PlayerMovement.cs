@@ -53,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
             inputVertical = Input.GetAxis("Vertical");
             isRunning = Input.GetKey(KeyCode.LeftShift);
 
-            // --- Animation ---
             if (animator != null)
             {
                 bool playerIsMoving = (inputHorizontal != 0 || inputVertical != 0);
@@ -70,12 +69,10 @@ public class PlayerMovement : MonoBehaviour
         float curSpeedY = (isRunning ? runSpeed : walkSpeed) * inputHorizontal;
         float movementDirectionY = moveDirection.y;
 
-        // Si canMove = false, on n'applique PAS la vitesse horizontale
         moveDirection = canMove ?
             (forward * curSpeedX) + (right * curSpeedY) :
             new Vector3(0, movementDirectionY, 0);
 
-        // Jump uniquement si on peut bouger
         if (canMove && Input.GetButton("Jump") && characterController.isGrounded)
         {
             moveDirection.y = jumpPower;
@@ -85,13 +82,11 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.y = movementDirectionY;
         }
 
-        // --- Gravité active même quand canMove = false ---
         if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
         }
 
-        // Crouch seulement si canMove
         if (canMove && Input.GetKey(KeyCode.R))
         {
             characterController.height = crouchHeight;
@@ -107,7 +102,6 @@ public class PlayerMovement : MonoBehaviour
 
         characterController.Move(moveDirection * Time.deltaTime);
 
-        // Rotation caméra et joueur UNIQUEMENT si canMove
         if (canMove)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
