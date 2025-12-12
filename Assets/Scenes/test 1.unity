@@ -1356,8 +1356,8 @@ MonoBehaviour:
   speed: 15
   distance: 20
   sideArc: 5
-  throwSound: {fileID: 8300000, guid: 4ca8ee371ffffea45b591831ee6849f3, type: 3}
-  flightSound: {fileID: 8300000, guid: bf99b722cfbdfd3489c847fffde11952, type: 3}
+  throwSound: {fileID: 8300000, guid: 05784b05a4e00d74b9b7343c3078a185, type: 3}
+  flightSound: {fileID: 0}
   catchSound: {fileID: 0}
 --- !u!4 &738079406
 Transform:
