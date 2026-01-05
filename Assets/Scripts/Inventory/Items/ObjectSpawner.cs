@@ -3,7 +3,7 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
     [Header("Cible à suivre")]
-    public Transform joueur;          // Glisse ton personnage ici !
+    public Transform joueur;          // input du personnage !
     public float hauteurAuDessus = 10f; // A quelle hauteur au-dessus de la tête il se place
 
     [Header("Paramètres de l'objet")]
