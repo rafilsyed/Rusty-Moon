@@ -33,7 +33,7 @@ public class PlayerInventoryHolder : InventoryHolder
             if (debugItemToSet != null)
             {
                 const int SLOT_INDEX = 0; // Le premier slot de la Hotbar
-                const int QUANTITY = 10;
+                const int QUANTITY = 64;
 
                 // Accède au slot cible
                 InventorySlot targetSlot = primaryInventorySystem.InventorySlots[SLOT_INDEX];
@@ -44,7 +44,7 @@ public class PlayerInventoryHolder : InventoryHolder
                 // Déclenche l'événement pour mettre à jour l'UI (pour que la Hotbar affiche l'objet)
                 primaryInventorySystem.OnInventorySlotChanged?.Invoke(targetSlot);
 
-                Debug.Log($"[CHEAT] 10x {debugItemToSet.DisplayName} forcé dans le Slot 1.");
+                Debug.Log($"[CHEAT] 64x {debugItemToSet.DisplayName} forcé dans le Slot 1.");
             }
             else
             {
