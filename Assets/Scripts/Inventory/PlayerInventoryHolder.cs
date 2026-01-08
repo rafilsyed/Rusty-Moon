@@ -32,10 +32,9 @@ public class PlayerInventoryHolder : InventoryHolder
             if (debugItemToSet != null)
             {
                 const int SLOT_INDEX = 0;
-                const int QUANTITY = 64;
 
                 InventorySlot targetSlot = primaryInventorySystem.InventorySlots[SLOT_INDEX];
-                targetSlot.UpdateInventorySlot(debugItemToSet, QUANTITY);
+                targetSlot.UpdateInventorySlot(debugItemToSet, debugItemToSet.MaxStackSize);
                 primaryInventorySystem.OnInventorySlotChanged?.Invoke(targetSlot);
             }
         }

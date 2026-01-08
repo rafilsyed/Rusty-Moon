@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Inventory System/Construction/Raft Piece")]
+[CreateAssetMenu(menuName = "Inventory System/Raft Item")]
 public class RaftPieceItemData : InventoryItemData
 {
     [Header("Sound Effects")]

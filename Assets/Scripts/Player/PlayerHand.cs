@@ -32,8 +32,6 @@ public class PlayerHand : MonoBehaviour
     {
         ClearHand();
 
-        Debug.Log("show item in hand");
-
         if (itemData != null && itemData.itemPrefab != null)
         {
             currentItem = Instantiate(itemData.itemPrefab, transform);

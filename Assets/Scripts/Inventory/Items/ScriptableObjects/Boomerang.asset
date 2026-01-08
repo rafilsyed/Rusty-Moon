@@ -11,11 +11,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65169f2cc80716149a9df5b4a1cac2ab, type: 3}
   m_Name: Boomerang
-  m_EditorClassIdentifier: Assembly-CSharp::BoomerangItem
+  m_EditorClassIdentifier: Assembly-CSharp::BoomerangItemData
   ID: 0
   DisplayName: Boomerang
   Description: 
   Icon: {fileID: 21300000, guid: 5538a005b762e284b91109543a06d5e2, type: 3}
   MaxStackSize: 1
   itemPrefab: {fileID: 3284176114983177306, guid: aad58f2972271b34ca93941176808c56, type: 3}
-  handDisplayScale: 0.5
+  handDisplayScale: 1

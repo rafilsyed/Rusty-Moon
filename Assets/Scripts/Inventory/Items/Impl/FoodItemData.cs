@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Inventory System/Food Item Data")]
+[CreateAssetMenu(menuName = "Inventory System/Food Item")]
 public class FoodItemData : InventoryItemData
 {
     [Header("Utils References")]
