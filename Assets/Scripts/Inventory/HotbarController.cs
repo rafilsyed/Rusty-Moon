@@ -62,11 +62,6 @@ public class HotbarController : MonoBehaviour
                 }
 
                 hotbarDisplay.InventorySystem.OnInventorySlotChanged?.Invoke(selectedSlot);
-                
-                PlayerHand playerHand = FindAnyObjectByType<PlayerHand>();
-                if (selectedSlot.StackSize <= 0){
-                    playerHand.ClearHand(); 
-                }
             }
         }
     }

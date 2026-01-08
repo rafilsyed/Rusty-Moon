@@ -12,7 +12,7 @@ public class Interactor : MonoBehaviour
     {
         var colliders = Physics.OverlapSphere(interactPoint.position, interactPointRadius, interactableLayer);
 
-        if (Keyboard.current.cKey.wasPressedThisFrame)
+        if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             for (int i = 0; i < colliders.Length; i++)
             {

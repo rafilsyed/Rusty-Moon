@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Gestion Crouch vs Course
-        if (canMove && Input.GetKey(KeyCode.R))
+        if (canMove && Input.GetKey(KeyCode.LeftShift))
         {
             characterController.height = crouchHeight;
             // On applique la vitesse directement ici sans modifier les variables globales

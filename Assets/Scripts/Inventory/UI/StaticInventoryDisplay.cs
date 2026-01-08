@@ -5,8 +5,6 @@ public class StaticInventoryDisplay : InventoryDisplay
 {
     [SerializeField] private InventoryHolder inventoryHolder;
     [SerializeField] private InventorySlot_UI[] slots;
-    [SerializeField] private PlayerHand playerHand;
-
     private int currentSelectedSlotIndex = -1;
 
     public InventoryItemData GetCurrentItem()
@@ -79,13 +77,5 @@ public class StaticInventoryDisplay : InventoryDisplay
 
         currentSelectedSlotIndex = index;
         slots[currentSelectedSlotIndex].ToggleHighlight(true);
-
-        if (playerHand != null)
-        {
-            if (GetCurrentItem() != null && GetCurrentItem().itemPrefab != null)
-                playerHand.ShowItemInHand(GetCurrentItem());
-            else
-                playerHand.ShowItemInHand(null);
-        }
     }
 }

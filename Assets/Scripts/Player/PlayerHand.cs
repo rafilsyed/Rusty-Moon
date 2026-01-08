@@ -2,11 +2,21 @@ using UnityEngine;
 
 public class PlayerHand : MonoBehaviour
 {
+    [SerializeField] private StaticInventoryDisplay staticInventoryDisplay;
     private GameObject currentItem;
 
-    public bool isInHand(GameObject itemPrefab)
+    void Start()
     {
-        return currentItem == itemPrefab;
+        InvokeRepeating(nameof(UpdateItemDisplay), 0f, 0.1f);
+    }
+
+    private void UpdateItemDisplay()
+    {
+        if (staticInventoryDisplay != null)
+        {
+            InventoryItemData currentItemData = staticInventoryDisplay.GetCurrentItem();
+            ShowItemInHand(currentItemData);
+        }
     }
 
     public void ClearHand()
