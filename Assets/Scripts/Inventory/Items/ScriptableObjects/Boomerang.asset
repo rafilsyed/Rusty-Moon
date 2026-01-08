@@ -17,3 +17,5 @@ MonoBehaviour:
   Description: 
   Icon: {fileID: 21300000, guid: 5538a005b762e284b91109543a06d5e2, type: 3}
   MaxStackSize: 1
+  itemPrefab: {fileID: 3284176114983177306, guid: aad58f2972271b34ca93941176808c56, type: 3}
+  handDisplayScale: 0.5

@@ -9,11 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ad64c89e41b34409073be076924d9d, type: 3}
+  m_Script: {fileID: 11500000, guid: 55acc1b02f2ed7f42b67da123eb578ad, type: 3}
   m_Name: Tomato
-  m_EditorClassIdentifier: Assembly-CSharp::InventoryItemData
+  m_EditorClassIdentifier: Assembly-CSharp::FoodItem
   ID: 0
   DisplayName: Tomato
   Description: 
   Icon: {fileID: 21300000, guid: 6edb79a2902587b468a87fbbee63488b, type: 3}
   MaxStackSize: 64
+  itemPrefab: {fileID: 3970495607890225637, guid: e83c0be8345c7ae43bdfce9f1447c1cd, type: 3}
+  handDisplayScale: 1
+  foodValue: 3
+  eatSound: {fileID: 8300000, guid: 3ffdabe53b314884c961b61966c2ab9b, type: 3}
+  volume: 1

@@ -9,10 +9,11 @@ public class InventoryItemData : ScriptableObject
     public string Description;
     public Sprite Icon;
     public int MaxStackSize; 
+    public GameObject itemPrefab;
+    public float handDisplayScale = 1f;
 
     public virtual bool UseItem()
     {
-        Debug.Log($"Utilisation de: {DisplayName}");
         return true; 
     }
 }

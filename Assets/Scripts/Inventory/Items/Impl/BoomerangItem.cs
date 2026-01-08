@@ -5,6 +5,7 @@ public class BoomerangItem : InventoryItemData
 {
     public override bool UseItem()
     {
+        Debug.Log("Boomerang thrown!");
         return true;
     }
 }
