@@ -1,9 +1,9 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Inventory System/Food Item")]
-public class FoodItem : InventoryItemData
+[CreateAssetMenu(menuName = "Inventory System/Food Item Data")]
+public class FoodItemData : InventoryItemData
 {
-    [Header("Informations")]
+    [Header("Utils References")]
     [SerializeField] private float foodValue;
     [Header("Sound Effects")]
     public AudioClip eatSound;
@@ -25,7 +25,14 @@ public class FoodItem : InventoryItemData
         source.spatialBlend = 0f;
         source.Play();
 
-        Object.Destroy(temp, eatSound.length);
+        Destroy(temp, eatSound.length);
+
+        PlayerFoodLevel playerFoodLevel = FindAnyObjectByType<PlayerFoodLevel>();
+        if (playerFoodLevel != null)
+        {
+            playerFoodLevel.EatFood(foodValue);
+        }
+        
         return true;
     }
 }
