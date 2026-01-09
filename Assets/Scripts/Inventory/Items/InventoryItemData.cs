@@ -16,4 +16,9 @@ public class InventoryItemData : ScriptableObject
     {
         return true; 
     }
+
+    public virtual bool Attack()
+    {
+        return true;
+    }
 }

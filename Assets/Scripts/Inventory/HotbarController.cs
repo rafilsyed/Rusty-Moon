@@ -63,6 +63,19 @@ public class HotbarController : MonoBehaviour
 
                 hotbarDisplay.InventorySystem.OnInventorySlotChanged?.Invoke(selectedSlot);
             }
+        }else if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            InventorySlot selectedSlot = hotbarDisplay.GetCurrentInventorySlot();
+
+            if (selectedSlot == null || selectedSlot.ItemData == null)
+            {
+                return;
+            }
+
+            if (selectedSlot.ItemData.Attack())
+            {
+                // Attack logic handled in the ItemData's Attack method
+            }
         }
     }
 }
