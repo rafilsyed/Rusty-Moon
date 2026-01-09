@@ -2629,7 +2629,7 @@ MonoBehaviour:
   secondaryInventorySize: 30
   secondaryInventorySystem:
     inventorySlots: []
-  debugItemToSet: {fileID: 11400000, guid: d201e63e633c5b345be0c43da1b85dad, type: 2}
+  debugItemToSet: {fileID: 11400000, guid: 78d6b0cc9018c454db4bea311360f2dd, type: 2}
 --- !u!114 &1604148495
 MonoBehaviour:
   m_ObjectHideFlags: 0
