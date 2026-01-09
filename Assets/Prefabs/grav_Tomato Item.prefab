@@ -71,7 +71,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickUp
   PickUpRadius: 1
-  ItemData: {fileID: 11400000, guid: 7edb05057dcbce0439ed8dae6df9938a, type: 2}
+  ItemData: {fileID: 11400000, guid: 78d6b0cc9018c454db4bea311360f2dd, type: 2}
+  pickUpSound: {fileID: 0}
 --- !u!54 &5827519028481589243
 Rigidbody:
   m_ObjectHideFlags: 0

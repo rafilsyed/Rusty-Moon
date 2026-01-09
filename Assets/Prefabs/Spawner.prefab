@@ -50,4 +50,4 @@ MonoBehaviour:
   dureeDeVie: 5
   largeurZone: 10
   profondeurZone: 10
-  intervalleTemps: 0
+  intervalleTemps: 1
