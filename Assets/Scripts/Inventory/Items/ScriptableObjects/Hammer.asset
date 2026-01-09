@@ -19,3 +19,6 @@ MonoBehaviour:
   MaxStackSize: 1
   itemPrefab: {fileID: 3616435474797665873, guid: e769f8f4baa361a4cbe8e53d0213f343, type: 3}
   handDisplayScale: 20
+  soundEffect: {fileID: 8300000, guid: 7b5353977a07f4c408fa9c68b5e66f82, type: 3}
+  volume: 1
+  range: 2
