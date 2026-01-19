@@ -22,7 +22,7 @@ public class PlayerInventoryHolder : InventoryHolder
 
     void Update()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if (Keyboard.current.eKey.wasPressedThisFrame && !Interactor.IsInteracting)
         {
             OnPlayerBackPackDisplayRequested?.Invoke(secondaryInventorySystem);
         }
@@ -46,6 +46,7 @@ public class PlayerInventoryHolder : InventoryHolder
         {
             return true;
         }
+        
         else if (secondaryInventorySystem.AddToInventory(data, amount))
         {
             return true;

@@ -6,20 +6,26 @@ public class Interactor : MonoBehaviour
     public Transform interactPoint;
     public LayerMask interactableLayer;
     public float interactPointRadius = 1f;
-    public bool IsInteracting { get; private set; }
+    public static bool IsInteracting { get; set; }
 
     private void Update()
     {
-        var colliders = Physics.OverlapSphere(interactPoint.position, interactPointRadius, interactableLayer);
-
-        if (Keyboard.current.rKey.wasPressedThisFrame)
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
-            for (int i = 0; i < colliders.Length; i++)
+            var colliders = Physics.OverlapSphere(interactPoint.position, interactPointRadius, interactableLayer);
             {
-                var interactable = colliders[i].GetComponent<IInteractable>();
+                for (int i = 0; i < colliders.Length; i++)
+                {
+                    var interactable = colliders[i].GetComponent<IInteractable>();
 
-                if (interactable != null) StartInteraction(interactable);
+                    if (interactable != null) StartInteraction(interactable);
+                }
             }
+        }
+
+        if(Keyboard.current.tabKey.wasPressedThisFrame && IsInteracting)
+        {
+            EndInteraction();
         }
     }
 
