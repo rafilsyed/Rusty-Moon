@@ -8,11 +8,20 @@ public class Cloud_Trap : MonoBehaviour
     public float cloudGravity = 3f;      // Gravité interne (douce)
     public float moveSpeedInCloud = 2f;  // Vitesse de déplacement lente
 
+    [Header("Réglages Dégâts")]
+    public float Damageincloud = 1f;     // Quantité de dégâts
+    public float damageInterval = 1.0f;  // Dégâts toutes les X secondes
+
     private PlayerMovement playerScript;
+    
+    private PlayerHealth PVjoueur; 
     private CharacterController cc;
     private float verticalVelocity = 0f;
     private bool isInCloud = false;
 
+    // Timer pour gérer la fréquence des dégâts
+    private float damageTimer = 0f;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -25,6 +34,7 @@ public class Cloud_Trap : MonoBehaviour
                 isInCloud = true;
                 playerScript.isTrapped = true; // On prend le contrôle !
                 verticalVelocity = 0f;
+                PVjoueur = other.GetComponent<PlayerHealth>();
             }
         }
     }
@@ -45,8 +55,28 @@ public class Cloud_Trap : MonoBehaviour
         if (isInCloud && cc != null)
         {
             HandleCloudPhysics();
+            HandleCloudDamage();
         }
     }
+
+    private void HandleCloudDamage()
+    {
+        // On augmente le timer avec le temps qui passe
+        damageTimer += Time.deltaTime;
+
+        // Si le timer dépasse l'intervalle défini 
+        if (damageTimer >= damageInterval)
+        {
+            ApplyDamageToPlayer();
+            damageTimer = 0f; 
+        }
+    }
+
+    private void ApplyDamageToPlayer()
+    {        
+        PVjoueur.TakeDamage(Damageincloud);
+    }
+        
 
     private void HandleCloudPhysics()
     {

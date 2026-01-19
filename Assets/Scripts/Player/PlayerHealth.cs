@@ -33,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        Debug.Log("aaa");
         UpdateUI();
     }
 
