@@ -3,6 +3,13 @@ using UnityEngine;
 public class PlayerHand : MonoBehaviour
 {
     [SerializeField] private StaticInventoryDisplay staticInventoryDisplay;
+    private bool eating = false;
+
+    public bool IsEating
+    {
+        get { return eating; }
+        set { eating = value; }
+    }
     private GameObject currentItem;
 
     void Start()
@@ -53,5 +60,19 @@ public class PlayerHand : MonoBehaviour
                 rb.isKinematic = true;
             }
         }
+    }
+
+    public void StartEating(float duration, FoodItemData foodItem)
+    {
+        if (!eating)
+        {
+            eating = true;
+            Invoke(nameof(StopEating), duration);
+        }
+    }
+
+    private void StopEating()
+    {
+        eating = false;
     }
 }
