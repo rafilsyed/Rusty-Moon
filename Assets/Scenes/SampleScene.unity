@@ -404,10 +404,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3309960777473856484, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
-      propertyPath: vitesse
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5266912476423913197, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
       propertyPath: m_Name
       value: Raft 1
@@ -415,10 +411,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5266912476423913197, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1062361632}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
 --- !u!224 &254844471 stripped
 RectTransform:
@@ -2050,23 +2043,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 2
   m_VerticalFit: 2
---- !u!1 &1062361626 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5266912476423913197, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
-  m_PrefabInstance: {fileID: 250996702}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1062361632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062361626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 299ea6c62854a44a089eaa2da49b471d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StickToRaft
 --- !u!1001 &1127075247
 PrefabInstance:
   m_ObjectHideFlags: 0
