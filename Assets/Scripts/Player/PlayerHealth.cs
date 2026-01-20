@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private Image healthBarImage;
-    [SerializeField] private Image damageEffectImage; // assign the Canvas image "effetdégat"
+    [SerializeField] private Image damageEffectImage;
     [SerializeField] private float damageEffectMaxAlpha = 0.8f;
     [SerializeField] private float damageEffectFadeDuration = 0.5f;
     private Coroutine damageEffectCoroutine;
@@ -45,11 +45,9 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        Debug.Log("aaa");
         
         UpdateUI();
 
-        // jouer le son de dégâts
         if (damageSfx != null)
         {
             if (audioSource != null)
@@ -64,12 +62,19 @@ public class PlayerHealth : MonoBehaviour
             }
         }
 
-        // affichage de l'effet de dégât (élément Canvas "effetdégat")
         if (damageEffectImage != null)
         {
             if (damageEffectCoroutine != null) StopCoroutine(damageEffectCoroutine);
             SetDamageEffectAlpha(damageEffectMaxAlpha);
             damageEffectCoroutine = StartCoroutine(FadeDamageEffect());
+        }
+
+        if(currentHealth <= 0f)
+        {
+            Debug.Log("Player is dead.");
+            transform.position = Vector3.zero;
+            currentHealth = maxHealth;
+            UpdateUI();
         }
     }
 
