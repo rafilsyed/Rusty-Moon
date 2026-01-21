@@ -4150,11 +4150,19 @@ PrefabInstance:
     - target: {fileID: 1014628688939380245, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
       propertyPath: chestOpenSound
       value: 
-      objectReference: {fileID: 8300000, guid: 74d9bec8cdccf1046876561ff4b7c90e, type: 3}
+      objectReference: {fileID: 8300000, guid: ca8505b3148e6ed41a518f0a8582fe52, type: 3}
+    - target: {fileID: 1014628688939380245, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: chestClosdSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c72a750a020776244be611c5de7198fb, type: 3}
     - target: {fileID: 1014628688939380245, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
       propertyPath: playerInventory
       value: 
       objectReference: {fileID: 1604148494}
+    - target: {fileID: 1014628688939380245, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: chestClosedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5d422daf5dde86c4987c91c4ff7fc282, type: 3}
     - target: {fileID: 1014628688939380245, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
       propertyPath: primaryInventorySystem.inventorySlots.Array.size
       value: 30
