@@ -10,7 +10,7 @@ public class BoomerangController : MonoBehaviour
     public Transform modelVisuel;
 
     [Header("Réglages Rotation")]
-    public Vector3 axeDeRotation = new Vector3(0, 1, 0); // Par défaut Y
+    public Vector3 axeDeRotation = new Vector3(0, 1, 0);
     public float rotationSpeed = 800f;
 
     [Header("Statistiques Vol")]
@@ -19,9 +19,9 @@ public class BoomerangController : MonoBehaviour
     public float sideArc = 5f;
 
     [Header("Sons")]
-    public AudioClip throwSound;       // Son au lancer
-    public AudioClip flightSound;      // Son pendant le vol (en boucle)
-    public AudioClip catchSound;       // Son à l'attrapage
+    public AudioClip throwSound;
+    public AudioClip flightSound;
+    public AudioClip catchSound;
 
     private AudioSource audioSource;
 
@@ -33,13 +33,15 @@ public class BoomerangController : MonoBehaviour
     private Vector3 returnCurvePoint;
     private float flightTime = 0f;
 
+    public bool IsThrown => isThrown;
+
     void Awake()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
 
-        audioSource.spatialBlend = 1f; // 3D
+        audioSource.spatialBlend = 1f;
         audioSource.rolloffMode = AudioRolloffMode.Linear;
         audioSource.minDistance = 1f;
         audioSource.maxDistance = 20f;
@@ -52,9 +54,6 @@ public class BoomerangController : MonoBehaviour
         {
             transform.position = playerHand.position;
             transform.rotation = playerHand.rotation;
-
-            if (Input.GetButtonDown("Fire1"))
-                ThrowBoomerang();
         }
         else
         {
@@ -62,7 +61,7 @@ public class BoomerangController : MonoBehaviour
         }
     }
 
-    void ThrowBoomerang()
+    public void ThrowBoomerang()
     {
         isThrown = true;
         isReturning = false;
@@ -72,17 +71,14 @@ public class BoomerangController : MonoBehaviour
         curvePoint = startPosition + (playerCamera.forward * (distance / 2)) + (playerCamera.right * sideArc);
         returnCurvePoint = startPosition + (playerCamera.forward * (distance / 2)) - (playerCamera.right * sideArc);
 
-        // Son du lancer
         if (throwSound != null)
             audioSource.PlayOneShot(throwSound);
 
-        // Son de vol en boucle
         if (flightSound != null)
         {
             audioSource.clip = flightSound;
             audioSource.loop = true;
             audioSource.PlayDelayed(throwSound != null ? throwSound.length : 0f); 
-            // facultatif : attendre que le lancer soit terminé
         }
     }
 
@@ -117,14 +113,12 @@ public class BoomerangController : MonoBehaviour
         if (modelVisuel != null) modelVisuel.localRotation = Quaternion.identity;
         transform.rotation = playerHand.rotation;
 
-        // Stopper le son de vol
         if (audioSource.isPlaying)
         {
             audioSource.Stop();
             audioSource.loop = false;
         }
 
-        // Jouer son d'attrapage
         if (catchSound != null)
             audioSource.PlayOneShot(catchSound);
     }

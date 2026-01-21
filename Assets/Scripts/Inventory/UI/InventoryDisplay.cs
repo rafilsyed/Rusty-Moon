@@ -24,9 +24,9 @@ public abstract class InventoryDisplay : MonoBehaviour
     {
         foreach (var slot in slotDictonary)
         {
-            if (slot.Value == updatedSlot) // Slot value - the "under the hood" inventory slot.
+            if (slot.Value == updatedSlot)
             {
-                slot.Key.UpdateUISlot(updatedSlot); //Slot key - the UI representation of the value.
+                slot.Key.UpdateUISlot(updatedSlot);
             }
         }
     }
