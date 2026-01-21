@@ -10,22 +10,27 @@ public class Interactor : MonoBehaviour
 
     private void Update()
     {
+        var colliders = Physics.OverlapSphere(interactPoint.position, interactPointRadius, interactableLayer);
+
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
-            var colliders = Physics.OverlapSphere(interactPoint.position, interactPointRadius, interactableLayer);
+            for (int i = 0; i < colliders.Length; i++)
             {
-                for (int i = 0; i < colliders.Length; i++)
-                {
-                    var interactable = colliders[i].GetComponent<IInteractable>();
+                var interactable = colliders[i].GetComponent<IInteractable>();
 
-                    if (interactable != null) StartInteraction(interactable);
-                }
+                if (interactable != null) StartInteraction(interactable);
             }
         }
 
         if(Keyboard.current.tabKey.wasPressedThisFrame && IsInteracting)
         {
             EndInteraction();
+
+            if (colliders.Length > 0)
+            {
+                var interactable = colliders[0].GetComponent<IInteractable>();
+                interactable.EndInteraction();
+            }
         }
     }
 

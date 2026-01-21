@@ -6,18 +6,17 @@ public class ChestInventory : InventoryHolder, IInteractable
     [SerializeField] private PlayerInventoryHolder playerInventory;
     [SerializeField] private AudioClip chestOpenSound;
 
-    private GameObject chestOpen;
-    private GameObject chestClosed;
+    private static GameObject chestOpen;
+    private static GameObject chestClosed;
 
     public UnityAction<IInteractable> OnInteractionComplete { get; set; }
 
     protected override void Awake()
     {
-        // Assumes:
-        // Child 0 = closed chest
-        // Child 1 = open chest
         chestClosed = transform.GetChild(0).gameObject;
         chestOpen = transform.GetChild(1).gameObject;
+
+        Debug.Log("ChestInventory Awake called");
 
         CloseChestUI();
     }
@@ -34,7 +33,7 @@ public class ChestInventory : InventoryHolder, IInteractable
 
     public void OpenChestUI()
     {
-        AudioSource.PlayClipAtPoint(chestOpenSound, transform.position);
+        AudioSource.PlayClipAtPoint(chestOpenSound, transform.position, 2f);
         chestClosed.SetActive(false);
         chestOpen.SetActive(true);
     }
@@ -47,7 +46,7 @@ public class ChestInventory : InventoryHolder, IInteractable
 
     public void EndInteraction()
     {
-        // Assuming 'this' refers to the current instance of ChestInventory
-        this.CloseChestUI();
+        Debug.Log("ChestInventory EndInteraction called");
+        CloseChestUI();
     }
 }
