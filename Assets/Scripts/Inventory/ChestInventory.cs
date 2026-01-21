@@ -2,9 +2,10 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class ChestInventory : InventoryHolder, IInteractable
-{   
+{
     [SerializeField] private PlayerInventoryHolder playerInventory;
     [SerializeField] private AudioClip chestOpenSound;
+    [SerializeField] private AudioClip chestClosedSound;
 
     private static GameObject chestOpen;
     private static GameObject chestClosed;
@@ -40,6 +41,7 @@ public class ChestInventory : InventoryHolder, IInteractable
 
     public void CloseChestUI()
     {
+        AudioSource.PlayClipAtPoint(chestClosedSound, transform.position, 2f);
         chestClosed.SetActive(true);
         chestOpen.SetActive(false);
     }
