@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    
+
     public float maxHealth = 100f;
     public float currentHealth;
     public bool invincible = false;
@@ -16,10 +16,6 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip damageSfx;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float damageSfxVolume = 1f;
-    [Header("Respawn Settings")]
-    [SerializeField] private GameObject gameObjectToRespawn;
-    [SerializeField] private AudioClip respawnAudioClip;
-
 
     private void Start()
     {
@@ -38,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
         {
             invincible = !invincible;
 
-            if(invincible) Debug.Log("🦸 GOD MODE ACTIVÉ ");
+            if (invincible) Debug.Log("🦸 GOD MODE ACTIVÉ ");
             else Debug.Log("💀 GOD MODE DÉSACTIVÉ ");
         }
     }
@@ -49,7 +45,7 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= damageAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        
+
         UpdateUI();
 
         if (damageSfx != null)
@@ -73,11 +69,12 @@ public class PlayerHealth : MonoBehaviour
             damageEffectCoroutine = StartCoroutine(FadeDamageEffect());
         }
 
-        if(currentHealth <= 0f)
+        if (currentHealth <= 0f)
         {
             Debug.Log("💀 Le joueur est mort !");
         }
     }
+
 
     void UpdateUI()
     {
@@ -97,7 +94,7 @@ public class PlayerHealth : MonoBehaviour
         if (damageEffectImage == null) yield break;
         float startAlpha = damageEffectImage.color.a;
         float t = 0f;
-        
+
         while (t < damageEffectFadeDuration)
         {
             t += Time.deltaTime;
@@ -105,7 +102,7 @@ public class PlayerHealth : MonoBehaviour
             SetDamageEffectAlpha(a);
             yield return null;
         }
-        
+
         SetDamageEffectAlpha(0f);
         damageEffectCoroutine = null;
     }
