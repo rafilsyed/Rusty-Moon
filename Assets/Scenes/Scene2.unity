@@ -2156,7 +2156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7, y: -2.7}
+  m_AnchoredPosition: {x: -7, y: -2.699997}
   m_SizeDelta: {x: 1920, y: 1276.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &893095657
@@ -3529,8 +3529,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 30, y: 0, z: 30}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 30, y: 5, z: 30}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!114 &1660381995
 MonoBehaviour:
   m_ObjectHideFlags: 0
