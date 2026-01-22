@@ -1,10 +1,13 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))] 
+[RequireComponent(typeof(Collider))]  
 public class BoomerangController : MonoBehaviour
 {
     [Header("Paramètres")]
     public Transform playerHand;
     public Transform playerCamera;
+    public PlayerInventoryHolder playerInventory;
     
     [Tooltip("Glisse ici l'objet qui doit tourner (le Pivot ou le modèle)")]
     public Transform modelVisuel;
@@ -24,6 +27,8 @@ public class BoomerangController : MonoBehaviour
     public AudioClip catchSound;
 
     private AudioSource audioSource;
+    private Rigidbody rb;
+    private Collider col;
 
     private bool isThrown = false;
     private bool isReturning = false;
@@ -32,6 +37,7 @@ public class BoomerangController : MonoBehaviour
     private Vector3 curvePoint;
     private Vector3 returnCurvePoint;
     private float flightTime = 0f;
+    
 
     public bool IsThrown => isThrown;
 
@@ -46,6 +52,18 @@ public class BoomerangController : MonoBehaviour
         audioSource.minDistance = 1f;
         audioSource.maxDistance = 20f;
         audioSource.loop = false;
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.isKinematic = true; // Important pour que le boomerang suive le script et non la gravité
+
+        col = GetComponent<Collider>();
+        col.isTrigger = true; // Le boomerang doit traverser les objets, pas rebondir dessus
+
+        // Tentative de trouver l'inventaire automatiquement si oublié dans l'inspecteur
+        if (playerInventory == null && playerHand != null)
+        {
+            playerInventory = playerHand.GetComponentInParent<PlayerInventoryHolder>();
+        }
     }
 
     void Update()
@@ -58,6 +76,33 @@ public class BoomerangController : MonoBehaviour
         else
         {
             MoveBoomerang();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // On ne ramasse que si le boomerang est en vol
+        if (!isThrown) return;
+
+        // On vérifie si l'objet touché a le script ItemPickUp
+        ItemPickUp item = other.GetComponent<ItemPickUp>();
+
+        // Si c'est un item et qu'on a bien l'inventaire du joueur
+        if (item != null && playerInventory != null)
+        {
+            // On essaie d'ajouter l'item à l'inventaire
+            if (playerInventory.AddToInventory(item.ItemData, 1))
+            {
+                // JOUER LE SON : On joue le son de l'item via l'AudioSource du boomerang
+                // (car l'item va être détruit immédiatement)
+                if (item.pickUpSound != null)
+                {
+                    audioSource.PlayOneShot(item.pickUpSound);
+                }
+
+                // On détruit l'objet ramassé
+                Destroy(other.gameObject);
+            }
         }
     }
 
@@ -131,4 +176,6 @@ public class BoomerangController : MonoBehaviour
         float uu = u * u;
         return (uu * p0) + (2 * u * t * p1) + (tt * p2);
     }
+    
+    
 }
