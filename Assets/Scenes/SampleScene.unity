@@ -404,6 +404,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3309960777473856484, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
+      propertyPath: vitesse
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5266912476423913197, guid: 61edb5b9271168d4d8c942255619a2a1, type: 3}
       propertyPath: m_Name
       value: Raft 1
@@ -471,6 +475,8 @@ MonoBehaviour:
   jumpEscapeForce: 5
   cloudGravity: 1
   moveSpeedInCloud: 2
+  Damageincloud: 1
+  damageInterval: 1
 --- !u!114 &305817320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2839,10 +2845,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b61fe0bfaf4144349440ae765947afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  healthBarImage: {fileID: 0}
-  maxHealth: 100
-  currentHealth: 0
-  invincible: 0
 --- !u!1 &1607418944
 GameObject:
   m_ObjectHideFlags: 0
