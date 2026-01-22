@@ -16,9 +16,6 @@ public class ChestInventory : InventoryHolder, IInteractable
     {
         chestClosed = transform.GetChild(0).gameObject;
         chestOpen = transform.GetChild(1).gameObject;
-
-        Debug.Log("ChestInventory Awake called");
-
         CloseChestUI();
     }
 
@@ -48,7 +45,6 @@ public class ChestInventory : InventoryHolder, IInteractable
 
     public void EndInteraction()
     {
-        Debug.Log("ChestInventory EndInteraction called");
         CloseChestUI();
     }
 }

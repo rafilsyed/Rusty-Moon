@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    
+    public float maxHealth = 100f;
+    public float currentHealth;
+    public bool invincible = false;
     [SerializeField] private Image healthBarImage;
     [SerializeField] private Image damageEffectImage;
     [SerializeField] private float damageEffectMaxAlpha = 0.8f;
@@ -12,10 +16,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip damageSfx;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float damageSfxVolume = 1f;
+    [Header("Respawn Settings")]
+    [SerializeField] private GameObject gameObjectToRespawn;
+    [SerializeField] private AudioClip respawnAudioClip;
 
-    public float maxHealth = 100f;
-    public float currentHealth;
-    public bool invincible = false;
 
     private void Start()
     {
@@ -71,16 +75,13 @@ public class PlayerHealth : MonoBehaviour
 
         if(currentHealth <= 0f)
         {
-            Debug.Log("Player is dead.");
-            transform.position = Vector3.zero;
-            currentHealth = maxHealth;
-            UpdateUI();
+            Debug.Log("💀 Le joueur est mort !");
         }
     }
 
     void UpdateUI()
     {
-        healthBarImage.fillAmount = GetHealthPercentage();
+        healthBarImage.fillAmount = currentHealth / maxHealth;
     }
 
     private void SetDamageEffectAlpha(float a)
@@ -96,6 +97,7 @@ public class PlayerHealth : MonoBehaviour
         if (damageEffectImage == null) yield break;
         float startAlpha = damageEffectImage.color.a;
         float t = 0f;
+        
         while (t < damageEffectFadeDuration)
         {
             t += Time.deltaTime;
@@ -103,12 +105,8 @@ public class PlayerHealth : MonoBehaviour
             SetDamageEffectAlpha(a);
             yield return null;
         }
+        
         SetDamageEffectAlpha(0f);
         damageEffectCoroutine = null;
-    }
-
-    public float GetHealthPercentage()
-    {
-        return currentHealth / maxHealth;
     }
 }
