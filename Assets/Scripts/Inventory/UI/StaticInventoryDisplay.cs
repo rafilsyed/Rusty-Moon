@@ -69,6 +69,15 @@ public class StaticInventoryDisplay : InventoryDisplay
 
     public void SetIndexActive(int index)
     {
+        if(index == -1)
+        {
+            if (currentSelectedSlotIndex != -1)
+                slots[currentSelectedSlotIndex].ToggleHighlight(false);
+
+            currentSelectedSlotIndex = -1;
+            return;
+        }
+
         if (index < 0 || index >= slots.Length) return;
         if (currentSelectedSlotIndex == index) return;
 

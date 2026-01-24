@@ -4,21 +4,30 @@ using UnityEngine.InputSystem;
 public class HotbarController : MonoBehaviour
 {
     [SerializeField] private StaticInventoryDisplay hotbarDisplay;
+    [SerializeField] private BoomerangSlot boomerangSlot;
 
     private void Update()
     {
         if (Cursor.visible) return;
 
-        if (Keyboard.current.digit1Key.wasPressedThisFrame) hotbarDisplay.SetIndexActive(0);
-        else if (Keyboard.current.digit2Key.wasPressedThisFrame) hotbarDisplay.SetIndexActive(1);
-        else if (Keyboard.current.digit3Key.wasPressedThisFrame) hotbarDisplay.SetIndexActive(2);
-        else if (Keyboard.current.digit4Key.wasPressedThisFrame) hotbarDisplay.SetIndexActive(3);
-        else if (Keyboard.current.digit5Key.wasPressedThisFrame) hotbarDisplay.SetIndexActive(4);
-        else if (Keyboard.current.digit6Key.wasPressedThisFrame) hotbarDisplay.SetIndexActive(5);
-        else if (Keyboard.current.digit7Key.wasPressedThisFrame) hotbarDisplay.SetIndexActive(6);
-        else if (Keyboard.current.digit8Key.wasPressedThisFrame) hotbarDisplay.SetIndexActive(7);
-        else if (Keyboard.current.digit9Key.wasPressedThisFrame) hotbarDisplay.SetIndexActive(8);
-        else if (Keyboard.current.digit0Key.wasPressedThisFrame) hotbarDisplay.SetIndexActive(9);
+        Key[] hotbarKeys = new Key[]{Key.Digit1, Key.Digit2, Key.Digit3, Key.Digit4, Key.Digit5, 
+        Key.Digit6, Key.Digit7, Key.Digit8, Key.Digit9, Key.Digit0};
+
+        for (int i = 0; i < hotbarKeys.Length; i++)
+        {
+            if (Keyboard.current[hotbarKeys[i]].wasPressedThisFrame)
+            {
+                hotbarDisplay.SetIndexActive(i);
+                boomerangSlot.SelectSlot(false);
+                break;
+            }
+        }
+
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            hotbarDisplay.SetIndexActive(-1);
+            boomerangSlot.SelectSlot(true);
+        }
 
         float scroll = Mouse.current.scroll.y.ReadValue();
 
@@ -39,6 +48,7 @@ public class HotbarController : MonoBehaviour
 
             if (newIndex != currentIndex)
             {
+                boomerangSlot.SelectSlot(false);
                 hotbarDisplay.SetIndexActive(newIndex);
             }
         }
@@ -63,7 +73,8 @@ public class HotbarController : MonoBehaviour
 
                 hotbarDisplay.InventorySystem.OnInventorySlotChanged?.Invoke(selectedSlot);
             }
-        }else if (Mouse.current.leftButton.wasPressedThisFrame)
+        }
+        else if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             InventorySlot selectedSlot = hotbarDisplay.GetCurrentInventorySlot();
 
