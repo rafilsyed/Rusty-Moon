@@ -1762,8 +1762,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 99
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 42f99dfda50366947916a13b349a3a20, type: 2}
+  m_sharedMaterial: {fileID: -1659051228762606702, guid: 42f99dfda50366947916a13b349a3a20, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2969,6 +2969,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090491766}
   m_CullTransparentMesh: 1
+--- !u!1001 &1209384689
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1014628688939380245, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 1604148494}
+    - target: {fileID: 6284875564123390834, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284875564123390834, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284875564123390834, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 38.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284875564123390834, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284875564123390834, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284875564123390834, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284875564123390834, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284875564123390834, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284875564123390834, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6284875564123390834, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584714572942044134, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
+      propertyPath: m_Name
+      value: Chest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec628fb8c593e9444b31fa414cce1178, type: 3}
 --- !u!1001 &1229440084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3741,14 +3802,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.76477885, b: 1, a: 0.1764706}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.77254903}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 5538a005b762e284b91109543a06d5e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5110,6 +5171,7 @@ SceneRoots:
   - {fileID: 1229440084}
   - {fileID: 743442676}
   - {fileID: 88583910}
+  - {fileID: 1209384689}
   - {fileID: 1361028984}
   - {fileID: 2104624368}
   - {fileID: 867274462}
