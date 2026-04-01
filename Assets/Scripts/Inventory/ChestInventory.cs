@@ -16,7 +16,8 @@ public class ChestInventory : InventoryHolder, IInteractable
     {
         chestClosed = transform.GetChild(0).gameObject;
         chestOpen = transform.GetChild(1).gameObject;
-        CloseChestUI();
+        chestClosed.SetActive(true);
+        chestOpen.SetActive(false);
     }
 
     public void Interact(Interactor interactor, out bool interactSuccessful)
@@ -26,7 +27,10 @@ public class ChestInventory : InventoryHolder, IInteractable
             ?.Invoke(playerInventory.SecondaryInventorySystem);
 
         interactSuccessful = true;
-        OpenChestUI();
+        if(chestClosed.activeSelf)
+        {
+            OpenChestUI();
+        }
     }
 
     public void OpenChestUI()
