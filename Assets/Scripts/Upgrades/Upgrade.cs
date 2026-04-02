@@ -9,4 +9,9 @@ public abstract class Upgrade : ScriptableObject
     public abstract int Price { get; }
 
     public abstract void OnUpgrade();
+
+    public virtual void reset()
+    {
+        
+    }
 }

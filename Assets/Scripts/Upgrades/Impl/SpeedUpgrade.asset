@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cda4e973cf986947875c77d8eb71821, type: 3}
   m_Name: SpeedUpgrade
   m_EditorClassIdentifier: Assembly-CSharp::SpeedUpgrade
-  icon: {fileID: 21300000, guid: 41bfff8c8949bff4da8dc5d9eb57356e, type: 3}
-  upgradeName: Speed Upgrade
-  description: Coucou
-  level: 1
-  price: 100
+  icon: {fileID: 21300000, guid: c96088d91b1a95746a2dc7f225aef08d, type: 3}
+  upgradeName: 
+  description: 
+  level: 5
+  price: 5
