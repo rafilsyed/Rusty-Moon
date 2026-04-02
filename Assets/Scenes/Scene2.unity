@@ -2613,9 +2613,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradesPanel
   playerMovement: {fileID: 1604148489}
   availableUpgrades:
+  - {fileID: 11400000, guid: 364e731baf7448148a5469be5f4341cf, type: 2}
   - {fileID: 11400000, guid: b8a6614ce3954ab45b81625858178f56, type: 2}
-  - {fileID: 11400000, guid: b8a6614ce3954ab45b81625858178f56, type: 2}
-  - {fileID: 11400000, guid: b8a6614ce3954ab45b81625858178f56, type: 2}
+  - {fileID: 11400000, guid: c0ef3ff07efd65e4181c4d38809282e7, type: 2}
 --- !u!65 &647930016
 BoxCollider:
   m_ObjectHideFlags: 0
