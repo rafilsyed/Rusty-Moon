@@ -15,6 +15,8 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
     private GameObject mainPanel;
     private Transform contentContainer;
     private int money = 1000;
+    [SerializeField] private AudioClip upgradeSound;
+    [SerializeField] private AudioClip notEnoughMoneySound;
 
     public void AddMoney(int amount)
     {
@@ -162,11 +164,21 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
             if(money < upg.Price)
             {
                 Debug.Log("Pas assez d'argent pour acheter cette amélioration !");
+                if (notEnoughMoneySound != null)
+                {
+                    AudioSource.PlayClipAtPoint(notEnoughMoneySound, Camera.main.transform.position);
+                }
                 return;
             }
 
             RemoveMoney(upg.Price);
             upg.OnUpgrade();
+            
+            if (upgradeSound != null)
+            {
+                AudioSource.PlayClipAtPoint(upgradeSound, Camera.main.transform.position);
+            }
+
             RefreshUpgrades();
         });
     }
