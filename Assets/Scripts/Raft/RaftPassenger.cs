@@ -15,6 +15,8 @@ public class RaftPassenger : MonoBehaviour
     {
         Vector3 movement = transform.position - lastRaftPosition;
 
+        // (On a supprimé le movement.y -= 0.05f d'ici !)
+
         if (playerTransform != null)
         {
             if (playerController != null)
@@ -29,7 +31,6 @@ public class RaftPassenger : MonoBehaviour
 
         lastRaftPosition = transform.position;
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

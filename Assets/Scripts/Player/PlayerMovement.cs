@@ -115,18 +115,44 @@ public class PlayerMovement : MonoBehaviour
             moveDirection.y = movementDirectionY;
         }
 
-        // Saut
-        if (canMove && Input.GetButton("Jump") && characterController.isGrounded)
+        bool isGroundedActuel = CheckGrounded();
+
+        // Saut 
+        // (Astuce: j'ai mis GetButtonDown au lieu de GetButton, ça évite les bugs de double-saut infini !)
+        if (canMove && Input.GetButtonDown("Jump") && isGroundedActuel)
         {
             moveDirection.y = jumpPower;
         }
 
         // Gravité
-        if (!characterController.isGrounded)
+        if (!isGroundedActuel)
         {
+            // On est en l'air, la gravité normale s'applique
             moveDirection.y -= gravity * Time.deltaTime;
         }
+        else if (moveDirection.y <= 0)
+        {
+            // On est au sol. On garde la petite pression constante (elle est bien calculée avec Time.deltaTime plus bas)
+            moveDirection.y = -2f; 
+        }
 
+        // Application du mouvement
         characterController.Move(moveDirection * Time.deltaTime);
+    }
+    private bool CheckGrounded()
+    {
+        // 1. On garde la détection de base de Unity au cas où
+        if (characterController.isGrounded) return true;
+
+        // 2. Le détecteur renforcé : on tire un petit rayon vers le bas.
+        // La capsule fait 2m de haut, donc les pieds sont à 1m en dessous du centre.
+        // On tire à 1.2m pour ignorer les petites secousses des vagues.
+        // "QueryTriggerInteraction.Ignore" empêche le rayon de s'embrouiller avec ton Trigger de radeau !
+        if (Physics.Raycast(transform.position, Vector3.down, 1.2f, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+        {
+            return true;
+        }
+
+        return false;
     }
 }
