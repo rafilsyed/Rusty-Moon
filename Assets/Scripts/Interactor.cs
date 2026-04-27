@@ -12,6 +12,7 @@ public class Interactor : MonoBehaviour
 
     private GameObject interactPopup;
     private TextMeshProUGUI popupText;
+    private bool forceEndInteraction = false;
 
     void Start()
     {
@@ -34,7 +35,7 @@ public class Interactor : MonoBehaviour
 
         interactPopup.SetActive(hasInteractable && !IsInteracting);
 
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if (Keyboard.current.fKey.wasPressedThisFrame)
         {
             for (int i = 0; i < colliders.Length; i++)
             {
@@ -44,7 +45,7 @@ public class Interactor : MonoBehaviour
             }
         }
 
-        if (Keyboard.current.tabKey.wasPressedThisFrame && IsInteracting)
+        if (Keyboard.current.tabKey.wasPressedThisFrame && IsInteracting || forceEndInteraction)
         {
             EndInteraction();
 
@@ -53,6 +54,8 @@ public class Interactor : MonoBehaviour
                 var interactable = colliders[0].GetComponent<IInteractable>();
                 interactable.EndInteraction();
             }
+
+            forceEndInteraction = false;
         }
     }
 
@@ -65,6 +68,11 @@ public class Interactor : MonoBehaviour
     void EndInteraction()
     {
         IsInteracting = false;
+    }
+
+    public void ForceEndInteraction()
+    {
+        forceEndInteraction = true;
     }
 
     void CreatePopup()
@@ -92,7 +100,7 @@ public class Interactor : MonoBehaviour
         textGO.transform.SetParent(interactPopup.transform);
 
         popupText = textGO.AddComponent<TextMeshProUGUI>();
-        popupText.text = "<b>[ E ]</b>   Interagir";
+        popupText.text = "<b>[ F ]</b>   Interagir";
         popupText.fontSize = 36;
         popupText.alignment = TextAlignmentOptions.Center;
         popupText.color = Color.white;

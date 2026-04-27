@@ -8025,6 +8025,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PT_Pine_Tree_03_logs
       objectReference: {fileID: 0}
+    - target: {fileID: 3845630753164295066, guid: 244ce2af788c0c346b86cbc0473811b0, type: 3}
+      propertyPath: quantiteParRecolte
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845630753164295066, guid: 244ce2af788c0c346b86cbc0473811b0, type: 3}
+      propertyPath: nombreDeRecoltesRestantes
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

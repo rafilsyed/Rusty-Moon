@@ -30,6 +30,7 @@ public class RessourceNode : MonoBehaviour, IInteractable
                 if (nombreDeRecoltesRestantes <= 0)
                 {
                     Destroy(gameObject);
+                    interactor.ForceEndInteraction();
                 }
             }
             else
