@@ -145,7 +145,7 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
         descTxt.color = new Color(0.8f, 0.8f, 0.8f);
         SetRect(descTxt.gameObject, new Vector2(0, 0), new Vector2(1, 0), new Vector2(6, 30), new Vector2(0, 45));
         descTxt.alignment = TextAlignmentOptions.TopLeft;
-        descTxt.enableWordWrapping = true;
+        descTxt.textWrappingMode = TextWrappingModes.Normal;
 
         // Bouton d'achat (bien à droite)
         GameObject btnGo = CreateUIObject("BuyBtn", card.transform);
