@@ -6,10 +6,6 @@ public class PlayerInventoryHolder : InventoryHolder
 {
     [SerializeField] protected int secondaryInventorySize;
     [SerializeField] protected InventorySystem secondaryInventorySystem;
-
-    [Header("Debug")]
-    [SerializeField] private InventoryItemData debugItemToSet;
-
     public InventorySystem SecondaryInventorySystem => secondaryInventorySystem;
 
     public static UnityAction<InventorySystem> OnPlayerBackPackDisplayRequested;
@@ -26,18 +22,6 @@ public class PlayerInventoryHolder : InventoryHolder
         {
             OnPlayerBackPackDisplayRequested?.Invoke(secondaryInventorySystem);
         }
-
-        if (Keyboard.current.iKey.wasPressedThisFrame)
-        {
-            if (debugItemToSet != null)
-            {
-                const int SLOT_INDEX = 0;
-
-                InventorySlot targetSlot = primaryInventorySystem.InventorySlots[SLOT_INDEX];
-                targetSlot.UpdateInventorySlot(debugItemToSet, debugItemToSet.MaxStackSize);
-                primaryInventorySystem.OnInventorySlotChanged?.Invoke(targetSlot);
-            }
-        }
     }
 
     public bool AddToInventory(InventoryItemData data, int amount)
@@ -52,6 +36,39 @@ public class PlayerInventoryHolder : InventoryHolder
             return true;
         }
 
+        return false;
+    }
+
+    public bool RemoveFromInventory(InventoryItemData data, int amount)
+    {
+        if (primaryInventorySystem.RemoveFromInventory(data, amount))
+        {
+            return true;
+        }
+        
+        else if (secondaryInventorySystem.RemoveFromInventory(data, amount))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool HasItem(InventoryItemData data, int amount, out InventorySystem inventorySystem)
+    {
+        if (primaryInventorySystem.HasItem(data, amount, out _))
+        {
+            inventorySystem = primaryInventorySystem;
+            return true;
+        }
+        
+        else if (secondaryInventorySystem.HasItem(data, amount, out _))
+        {
+            inventorySystem = secondaryInventorySystem;
+            return true;
+        }
+
+        inventorySystem = null;
         return false;
     }
 }
