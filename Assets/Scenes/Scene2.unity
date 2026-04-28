@@ -1368,6 +1368,58 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8fd0d08c30426d4c978a4998752cf7d, type: 3}
   m_PrefabInstance: {fileID: 1630760092}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &285295742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 285295743}
+  - component: {fileID: 285295744}
+  m_Layer: 5
+  m_Name: CraftPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &285295743
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285295742}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1892640178}
+  m_Father: {fileID: 2104624368}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 622, y: 13}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &285295744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285295742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e95e89a8c7d8c42ba5a482c6364572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CraftPanel
+  craftButtonPrefab: {fileID: 3863107996428714206, guid: 9d1567f19677ad24f99d59f9ca63b7a2, type: 3}
+  craftSound: {fileID: 8300000, guid: 3ba1ed6038a941548ab0a3a42029b19a, type: 3}
+  cannotCraftSound: {fileID: 8300000, guid: d9af6d2712c60d44ebbd288cf3230a8e, type: 3}
 --- !u!1 &295449535
 GameObject:
   m_ObjectHideFlags: 0
@@ -6815,7 +6867,6 @@ MonoBehaviour:
   secondaryInventorySize: 30
   secondaryInventorySystem:
     inventorySlots: []
-  debugItemToSet: {fileID: 11400000, guid: 58472828849a3184e8365c69cd3b42cd, type: 2}
 --- !u!114 &1604148495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7768,6 +7819,60 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4ce77fae258db1419fe426be4a51bbb, type: 3}
+--- !u!1 &1892640177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1892640178}
+  - component: {fileID: 1892640179}
+  m_Layer: 5
+  m_Name: RopeRecipe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1892640178
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892640177}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.7240971, y: 1.7240971, z: 1.7240971}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285295743}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1892640179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892640177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5399028147b0841a1984e36f082daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CraftRecipe
+  ResultItem: {fileID: 11400000, guid: e27faf997e23ab941ae91d6b5556246a, type: 2}
+  ResultQuantity: 1
+  Requirements:
+  - Item: {fileID: 11400000, guid: 58472828849a3184e8365c69cd3b42cd, type: 2}
+    Quantity: 3
+  playerInventory: {fileID: 1604148494}
 --- !u!1 &1908314766
 GameObject:
   m_ObjectHideFlags: 0
@@ -8583,6 +8688,7 @@ RectTransform:
   - {fileID: 893095656}
   - {fileID: 2095708120}
   - {fileID: 1945632300}
+  - {fileID: 285295743}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
