@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -71,7 +72,9 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0f)
         {
-            Debug.Log("💀 Le joueur est mort !");
+            SceneManager.LoadScene("DeathScene");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
