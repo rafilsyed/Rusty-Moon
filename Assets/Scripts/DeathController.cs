@@ -7,24 +7,12 @@ public class DeathController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("1. Script lancé");
         AudioSource audioSource = GetComponent<AudioSource>();
-
-        if (audioSource == null)
+        if (audioSource != null && deathMusic != null)
         {
-            Debug.LogError("2. ERREUR : Il manque un composant AudioSource sur cet objet !");
-            return;
+            audioSource.clip = deathMusic;
+            audioSource.Play();
         }
-
-        if (deathMusic == null)
-        {
-            Debug.LogError("2. ERREUR : Tu as oublié de glisser le son dans la case Death Music !");
-            return;
-        }
-
-        audioSource.clip = deathMusic;
-        audioSource.Play();
-        Debug.Log("3. Le son devrait jouer maintenant : " + deathMusic.name);
     }
 
     public void ReturnToMainMenu()
