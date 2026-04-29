@@ -43,7 +43,7 @@ public class PlayerHand : MonoBehaviour
         {
             currentItem = Instantiate(itemData.itemPrefab, transform);
             currentItem.transform.localPosition = Vector3.zero;
-            currentItem.transform.localRotation = Quaternion.identity;
+            currentItem.transform.localRotation = Quaternion.Euler(itemData.rotationOffsetDansLaMain);
             currentItem.transform.localScale = Vector3.one * itemData.handDisplayScale;
 
             Collider[] colliders = currentItem.GetComponentsInChildren<Collider>();

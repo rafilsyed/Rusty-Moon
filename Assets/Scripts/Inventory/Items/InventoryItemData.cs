@@ -11,13 +11,14 @@ public class InventoryItemData : ScriptableObject
     public int MaxStackSize; 
     public GameObject itemPrefab;
     public float handDisplayScale = 1f;
+    public Vector3 rotationOffsetDansLaMain = Vector3.zero;
 
     public virtual bool UseItem()
     {
         return true; 
     }
 
-    public virtual bool Attack()
+        public virtual bool Attack()
     {
         return true;
     }
