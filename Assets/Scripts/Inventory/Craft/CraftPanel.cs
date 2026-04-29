@@ -3,14 +3,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Linq;
+using UnityEngine.Events;
 
-public class CraftPanel : MonoBehaviour
+public class CraftPanel : MonoBehaviour, IInteractable
 {
+    public GameObject craftPanelUI;
     public GameObject craftButtonPrefab;
+    public PlayerMovement playerMovement;
     private List<CraftRecipe> craftRecipes;
     public AudioClip craftSound;
     public AudioClip cannotCraftSound;
     private readonly Dictionary<GameObject, CraftRecipe> buttonRecipeMap = new();
+    public UnityAction<IInteractable> OnInteractionComplete { get; set; }
 
     private void Start()
     {
@@ -18,7 +22,7 @@ public class CraftPanel : MonoBehaviour
 
         foreach (CraftRecipe recipe in craftRecipes)
         {
-            GameObject buttonGO = Instantiate(craftButtonPrefab, transform);
+            GameObject buttonGO = Instantiate(craftButtonPrefab, craftPanelUI.transform, false);
 
             Image image = buttonGO.GetComponentInChildren<Image>();
             Button button = buttonGO.GetComponentInChildren<Button>();
@@ -38,22 +42,29 @@ public class CraftPanel : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void Interact(Interactor interactor, out bool interactSuccessful)
     {
+        foreach (GameObject buttonGO in buttonRecipeMap.Keys)
+        {
+            buttonGO.SetActive(true);
+        }
 
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+		playerMovement.SetCanMove(false);
+		Cursor.lockState = CursorLockMode.Confined;
+		Cursor.visible = true;
+
+        interactSuccessful = true;
+    }
+
+    public void EndInteraction()
+    {
+        foreach (GameObject buttonGO in buttonRecipeMap.Keys)
         {
-            foreach (GameObject buttonGO in buttonRecipeMap.Keys)
-            {
-                buttonGO.SetActive(true);
-            }
+            buttonGO.SetActive(false);
         }
-        else if (Keyboard.current.tabKey.wasPressedThisFrame)
-        {
-            foreach (GameObject buttonGO in buttonRecipeMap.Keys)
-            {
-                buttonGO.SetActive(false);
-            }
-        }
+
+        playerMovement.SetCanMove(true);
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
     }
 }

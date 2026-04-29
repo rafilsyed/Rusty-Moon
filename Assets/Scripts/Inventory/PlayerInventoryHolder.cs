@@ -16,11 +16,20 @@ public class PlayerInventoryHolder : InventoryHolder
         secondaryInventorySystem = new InventorySystem(secondaryInventorySize);
     }
 
+    [SerializeField] private InventoryItemData giveItemData;
+    [SerializeField] private int giveAmount;
+
     void Update()
     {
         if (Keyboard.current.eKey.wasPressedThisFrame && !Interactor.IsInteracting)
         {
             OnPlayerBackPackDisplayRequested?.Invoke(secondaryInventorySystem);
+        }
+
+        if(Keyboard.current.f5Key.wasPressedThisFrame)
+        {
+            // Give item for testing
+            AddToInventory(giveItemData, giveAmount);
         }
     }
 
