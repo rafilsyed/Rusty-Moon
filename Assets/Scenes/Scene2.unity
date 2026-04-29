@@ -626,11 +626,11 @@ PrefabInstance:
       objectReference: {fileID: 3970495607890225637, guid: e83c0be8345c7ae43bdfce9f1447c1cd, type: 3}
     - target: {fileID: 8715303192529036004, guid: 6af3cbba2c662804d9e2fb691a96e6ef, type: 3}
       propertyPath: objetsAPop.Array.data[0].chanceDApparition
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8715303192529036004, guid: 6af3cbba2c662804d9e2fb691a96e6ef, type: 3}
       propertyPath: objetsAPop.Array.data[1].chanceDApparition
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
