@@ -3,60 +3,84 @@ using UnityEngine;
 public class FishingRodController : MonoBehaviour
 {
     [Header("Réglages Animation")]
-    public float angleDeRecul = -45f; // Jusqu'où la canne se penche en arrière
-    public float vitesseDeCharge = 3f; // Vitesse d'armement
-    public float vitesseDeLancer = 15f; // Vitesse du coup de fouet (très rapide)
+    public float angleDeRecul = -45f; 
+    public float vitesseDeCharge = 3f; 
+    public float vitesseDeLancer = 15f; 
 
     [Header("Réglages Pêche")]
-    public float castPower = 10f;
+    public float castPower = 15f; 
     public AudioClip castSound;
     public float volume = 1f;
+
+    [Header("Lancer d'Hameçon")]
+    public GameObject hookPrefab; 
+    public Transform spawnPoint;  
+    
+    // 👇 NOUVEAU : Le composant qui dessine la ligne
+    [Header("Fil de Pêche")]
+    public LineRenderer filDePeche; 
 
     private Quaternion rotationInitiale;
     private float angleActuel = 0f;
     private bool estEnCharge = false;
+    private GameObject hameconActuel; 
 
     void Start()
     {
-        // On mémorise la rotation de base (incluant le fameux offset de 180 degrés)
         rotationInitiale = transform.localRotation;
+        
+        // On s'assure que le fil est caché au démarrage
+        if (filDePeche != null) filDePeche.enabled = false;
     }
 
     void Update()
     {
-        // 1 = Clic droit de la souris
         if (Input.GetMouseButton(1))
         {
             estEnCharge = true;
-            // La canne recule doucement jusqu'à l'angle de recul
             angleActuel = Mathf.Lerp(angleActuel, angleDeRecul, Time.deltaTime * vitesseDeCharge);
         }
-        // Au moment précis où on lâche le clic droit
         else if (Input.GetMouseButtonUp(1) && estEnCharge)
         {
             estEnCharge = false;
-            // Coup de fouet vers l'avant ! (On dépasse un peu le zéro pour l'effet)
             angleActuel = 40f; 
 
-            // --- On déclenche la vraie action de pêche ---
             LancerLaLigne();
         }
         else
         {
-            // Si on ne fait rien, la canne revient doucement à sa position de repos (0)
             angleActuel = Mathf.Lerp(angleActuel, 0f, Time.deltaTime * vitesseDeLancer);
         }
 
-        // On applique la rotation finale.
-        // NOTE: Selon l'orientation de ton modèle 3D, si la canne penche sur le côté au lieu d'en arrière,
-        // remplace (angleActuel, 0f, 0f) par (0f, angleActuel, 0f) ou (0f, 0f, angleActuel).
         transform.localRotation = rotationInitiale * Quaternion.Euler(angleActuel, 0f, 0f);
+    }
+
+    // 👇 NOUVELLE FONCTION : Gère le fil à chaque image
+    void LateUpdate()
+    {
+        if (filDePeche != null)
+        {
+            if (hameconActuel != null)
+            {
+                // Si un hameçon existe, on active le fil
+                filDePeche.enabled = true;
+                
+                // Le début du fil (Point 0) est au bout de la canne
+                filDePeche.SetPosition(0, spawnPoint.position);
+                
+                // La fin du fil (Point 1) est sur l'hameçon
+                filDePeche.SetPosition(1, hameconActuel.transform.position);
+            }
+            else
+            {
+                // Si l'hameçon n'est plus là, on cache le fil
+                filDePeche.enabled = false;
+            }
+        }
     }
 
     private void LancerLaLigne()
     {
-        Debug.Log("Lancement de la ligne avec une puissance de " + castPower);
-
         if (castSound != null)
         {
             GameObject temp = new GameObject("FishingSoundTemp");
@@ -65,6 +89,23 @@ public class FishingRodController : MonoBehaviour
             source.volume = volume;
             source.Play();
             Destroy(temp, castSound.length);
+        }
+
+        if (hookPrefab != null && spawnPoint != null)
+        {
+            if (hameconActuel != null)
+            {
+                Destroy(hameconActuel);
+            }
+
+            hameconActuel = Instantiate(hookPrefab, spawnPoint.position, spawnPoint.rotation);
+
+            Rigidbody hookRb = hameconActuel.GetComponent<Rigidbody>();
+            if (hookRb != null)
+            {
+                Vector3 directionLancer = Camera.main.transform.forward + (Vector3.up * 0.3f);
+                hookRb.AddForce(directionLancer.normalized * castPower, ForceMode.Impulse);
+            }
         }
     }
 }
