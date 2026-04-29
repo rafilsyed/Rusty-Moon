@@ -13,19 +13,7 @@ public class FishingRodItemData : InventoryItemData
 
     public override bool UseItem()
     {
-       // On récupère le joueur (on suppose qu'il a le tag "Player")
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null) return false;
-
-        // Jouer le son de lancer
-        PlayCastSound();
-
-        // Logique de lancer (exemple simplifié)
-        Debug.Log("Lancement de la ligne avec une puissance de " + castPower);
-        
-        // Ici, tu pourrais instancier ton flotteur devant le joueur
-
-        return true;
+        return false; 
     }
 
     private void PlayCastSound()

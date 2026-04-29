@@ -19,7 +19,7 @@ MonoBehaviour:
   MaxStackSize: 1
   itemPrefab: {fileID: 919132149155446097, guid: fa0181e70eedcfc419a6c929208f0d74, type: 3}
   handDisplayScale: 50
-  rotationOffsetDansLaMain: {x: 0, y: 0, z: 180}
+  rotationOffsetDansLaMain: {x: -50, y: 0, z: 180}
   castSound: {fileID: 0}
   volume: 1
   castPower: 10

@@ -7345,8 +7345,8 @@ MonoBehaviour:
   secondaryInventorySize: 30
   secondaryInventorySystem:
     inventorySlots: []
-  giveItemData: {fileID: 0}
-  giveAmount: 0
+  giveItemData: {fileID: 11400000, guid: ad02bbe4bfd0f3e4ba0539f2933af8db, type: 2}
+  giveAmount: 1
 --- !u!114 &1604148495
 MonoBehaviour:
   m_ObjectHideFlags: 0

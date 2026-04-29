@@ -12,6 +12,8 @@ public class PlayerHand : MonoBehaviour
     }
     private GameObject currentItem;
 
+    private InventoryItemData currentItemDataHeld;
+
     void Start()
     {
         InvokeRepeating(nameof(UpdateItemDisplay), 0f, 0.1f);
@@ -22,7 +24,14 @@ public class PlayerHand : MonoBehaviour
         if (staticInventoryDisplay != null)
         {
             InventoryItemData currentItemData = staticInventoryDisplay.GetCurrentItem();
-            ShowItemInHand(currentItemData);
+            
+            // NOUVEAU : On vérifie si l'objet sélectionné dans l'inventaire a changé
+            if (currentItemData != currentItemDataHeld)
+            {
+                // Si c'est un nouvel objet, on met à jour la mémoire et on le fait apparaître
+                currentItemDataHeld = currentItemData;
+                ShowItemInHand(currentItemData);
+            }
         }
     }
 
