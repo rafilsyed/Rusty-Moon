@@ -7,26 +7,16 @@ using UnityEngine.UI;
 public class UpgradesPanel : MonoBehaviour, IInteractable
 {
     [Header("Configuration")]
-    [SerializeField] public PlayerMovement playerMovement;
+    [SerializeField] public PlayerMovement playerMovement; 
+    [SerializeField] private PlayerMoney playerMoney;
     public List<Upgrade> availableUpgrades = new();
     public UnityAction<IInteractable> OnInteractionComplete { get; set; }
 
     private GameObject canvasGO;
     private GameObject mainPanel;
     private Transform contentContainer;
-    private int money = 1000;
     [SerializeField] private AudioClip upgradeSound;
     [SerializeField] private AudioClip notEnoughMoneySound;
-
-    public void AddMoney(int amount)
-    {
-        money += amount;
-    }
-
-    public void RemoveMoney(int amount)
-    {
-        money -= amount;
-    }
 
     public void Start()
     {
@@ -161,7 +151,7 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
 
         btn.onClick.AddListener(() =>
         {
-            if(money < upg.Price)
+            if(playerMoney.GetMoney() < upg.Price)
             {
                 Debug.Log("Pas assez d'argent pour acheter cette amélioration !");
                 if (notEnoughMoneySound != null)
@@ -171,7 +161,7 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
                 return;
             }
 
-            RemoveMoney(upg.Price);
+            playerMoney.RemoveMoney(upg.Price);
             upg.OnUpgrade();
             
             if (upgradeSound != null)
