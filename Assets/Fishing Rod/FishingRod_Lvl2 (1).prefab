@@ -77,9 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9adcb9e7c672b754f8a82a5ac2dd68ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishingRodController
-  angleDeRecul: -45
+  angleDeRecul: 45
   vitesseDeCharge: 3
-  vitesseDeLancer: 15
+  vitesseDeLancer: 30
   castPower: 10
-  castSound: {fileID: 0}
+  castSound: {fileID: 8300000, guid: fbe9b599e96ab1f4a8ca6bbcb79fac2c, type: 3}
   volume: 1
