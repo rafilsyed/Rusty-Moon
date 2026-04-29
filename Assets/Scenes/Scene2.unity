@@ -9583,63 +9583,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 885326592754343927, guid: c30e3b06301f3de4eae29b5348e9a5b6, type: 3}
   m_PrefabInstance: {fileID: 895670967}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5721589975436632601
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8120094212783763619, guid: 17d496a1797ce9f4e990aed15f5211aa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 21.049839
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120094212783763619, guid: 17d496a1797ce9f4e990aed15f5211aa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.1253238
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120094212783763619, guid: 17d496a1797ce9f4e990aed15f5211aa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 84.8982
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120094212783763619, guid: 17d496a1797ce9f4e990aed15f5211aa, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120094212783763619, guid: 17d496a1797ce9f4e990aed15f5211aa, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120094212783763619, guid: 17d496a1797ce9f4e990aed15f5211aa, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120094212783763619, guid: 17d496a1797ce9f4e990aed15f5211aa, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120094212783763619, guid: 17d496a1797ce9f4e990aed15f5211aa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120094212783763619, guid: 17d496a1797ce9f4e990aed15f5211aa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120094212783763619, guid: 17d496a1797ce9f4e990aed15f5211aa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8933890444608023065, guid: 17d496a1797ce9f4e990aed15f5211aa, type: 3}
-      propertyPath: m_Name
-      value: FishingRod_Lvl2 (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 17d496a1797ce9f4e990aed15f5211aa, type: 3}
 --- !u!1001 &7303291819336297825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9754,4 +9697,3 @@ SceneRoots:
   - {fileID: 884681115}
   - {fileID: 1156174041}
   - {fileID: 1605770759}
-  - {fileID: 5721589975436632601}
