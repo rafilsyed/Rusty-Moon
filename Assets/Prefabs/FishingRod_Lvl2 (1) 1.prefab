@@ -129,6 +129,28 @@ MonoBehaviour:
   hookPrefab: {fileID: 3225350427148339798, guid: 0b4bfc2a1b893234ea02dd35921f0870, type: 3}
   spawnPoint: {fileID: 7970125798145105745}
   filDePeche: {fileID: 3782850557612910357}
+  splashSound: {fileID: 8300000, guid: 3ba1ed6038a941548ab0a3a42029b19a, type: 3}
+  longueurFilPoisson: 1.5
+  tempsMinAvantTouche: 2
+  tempsMaxAvantTouche: 6
+  tempsPourReagir: 2
+  poissonsPossibles:
+  - prefab3D: {fileID: 6842487585256535508, guid: 53686bc0aa8109342b841090767255be, type: 3}
+    itemDonne: {fileID: 11400000, guid: 0cfbbbf6bb267b448a4a647047c3cae8, type: 2}
+  - prefab3D: {fileID: 7751563022547625540, guid: d7254e9188ad9bd478f7202989144a95, type: 3}
+    itemDonne: {fileID: 11400000, guid: 0cfbbbf6bb267b448a4a647047c3cae8, type: 2}
+  - prefab3D: {fileID: 2912641691362679577, guid: a9a0e0330150fa54bbedea4522e68c27, type: 3}
+    itemDonne: {fileID: 11400000, guid: 0cfbbbf6bb267b448a4a647047c3cae8, type: 2}
+  - prefab3D: {fileID: 7612737446571875710, guid: 7ae377fe6a27c8449ab29e7ec0f188fe, type: 3}
+    itemDonne: {fileID: 11400000, guid: 0cfbbbf6bb267b448a4a647047c3cae8, type: 2}
+  - prefab3D: {fileID: 3823470303935773935, guid: 6f0106e3c78e2a24f8f7e661c18da63c, type: 3}
+    itemDonne: {fileID: 11400000, guid: 60494af6c331702429768ab5ec3157ad, type: 2}
+  - prefab3D: {fileID: 907090254401782554, guid: e0fa1c6cc76b09b4d8e9e820a093e2ab, type: 3}
+    itemDonne: {fileID: 11400000, guid: 60494af6c331702429768ab5ec3157ad, type: 2}
+  - prefab3D: {fileID: 3827358341683438231, guid: c0d9f75a183a0e14d819e0987c4298a9, type: 3}
+    itemDonne: {fileID: 11400000, guid: 60494af6c331702429768ab5ec3157ad, type: 2}
+  - prefab3D: {fileID: 223122239559056999, guid: e844d613e77d6db4a971b96e8a5a062d, type: 3}
+    itemDonne: {fileID: 11400000, guid: a326e438bbff3444293c5f331c69904a, type: 2}
 --- !u!120 &3782850557612910357
 LineRenderer:
   serializedVersion: 2
