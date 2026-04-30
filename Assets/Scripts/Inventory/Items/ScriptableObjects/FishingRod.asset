@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FishingRod
   m_EditorClassIdentifier: Assembly-CSharp::FishingRodItemData
   ID: 0
-  DisplayName: Fishing Rod
+  DisplayName: "Canne \xE0 p\xEAche"
   Description: "devine \xE0 quoi \xE7a sert ?\nbah \xE0 pecher"
   Icon: {fileID: 21300000, guid: c1e980a394ca75347b5a5dafccaacf15, type: 3}
   MaxStackSize: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LargeFish
   m_EditorClassIdentifier: Assembly-CSharp::FishItemData
   ID: 0
-  DisplayName: 
+  DisplayName: Gros poisson
   Description: 
   Icon: {fileID: 21300000, guid: 156b1e6bd61b664428fb91ccb23039cf, type: 3}
   MaxStackSize: 10

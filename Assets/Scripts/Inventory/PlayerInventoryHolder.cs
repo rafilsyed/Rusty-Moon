@@ -80,4 +80,27 @@ public class PlayerInventoryHolder : InventoryHolder
         inventorySystem = null;
         return false;
     }
+
+    public void SellAllFish(PlayerMoney playerMoney)
+    {
+        foreach (var slot in primaryInventorySystem.InventorySlots)
+        {
+            if (slot.ItemData != null && slot.ItemData is FishItemData fishItemData)
+            {
+                playerMoney.AddMoney(fishItemData.soldPrice * slot.StackSize);
+                slot.ClearSlot();
+                primaryInventorySystem.OnInventorySlotChanged?.Invoke(slot);
+            }
+        }
+
+        foreach (var slot in secondaryInventorySystem.InventorySlots)
+        {
+            if (slot.ItemData != null && slot.ItemData is FishItemData fishItemData)
+            {
+                playerMoney.AddMoney(fishItemData.soldPrice * slot.StackSize);
+                slot.ClearSlot();
+                secondaryInventorySystem.OnInventorySlotChanged?.Invoke(slot);
+            }
+        }
+    }
 }

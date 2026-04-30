@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: WoodenAxe
   m_EditorClassIdentifier: Assembly-CSharp::AxeItemData
   ID: 0
-  DisplayName: Axe
+  DisplayName: Hache en bois
   Description: 
   Icon: {fileID: 21300000, guid: 9977df83333f4ef4e87ac02947b6e887, type: 3}
   MaxStackSize: 0
   itemPrefab: {fileID: 919132149155446097, guid: e24a4a23f7c346e59902cbf46204212e, type: 3}
   handDisplayScale: 1
+  rotationOffsetDansLaMain: {x: 0, y: 0, z: 0}
   range: 3
   degatsDeCoupe: 1
   swingSound: {fileID: 0}

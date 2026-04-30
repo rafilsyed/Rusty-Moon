@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Fiber
   m_EditorClassIdentifier: Assembly-CSharp::FiberItemData
   ID: 0
-  DisplayName: 
+  DisplayName: Fibre
   Description: 
   Icon: {fileID: 21300000, guid: 684b5e8491b4d4147b6c911fabbca75a, type: 3}
   MaxStackSize: 64
   itemPrefab: {fileID: 0}
   handDisplayScale: 1
+  rotationOffsetDansLaMain: {x: 0, y: 0, z: 0}

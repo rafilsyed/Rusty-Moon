@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class UpgradesPanel : MonoBehaviour, IInteractable
 {
     [Header("Configuration")]
-    [SerializeField] public PlayerMovement playerMovement; 
+    [SerializeField] public PlayerMovement playerMovement;
+    [SerializeField] public PlayerInventoryHolder playerInventory;
     [SerializeField] private PlayerMoney playerMoney;
     public List<Upgrade> availableUpgrades = new();
     public UnityAction<IInteractable> OnInteractionComplete { get; set; }
@@ -24,7 +25,7 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
         {
             upg.reset();
         }
-    } 
+    }
 
     public void Interact(Interactor interactor, out bool interactSuccessful)
     {
@@ -65,6 +66,24 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
         var panelImg = mainPanel.AddComponent<Image>();
         panelImg.color = new Color(0.12f, 0.12f, 0.14f, 1f);
 
+        // 3.5. Bouton Vendre (à droite en dehors du menu)
+        GameObject sellBtn = CreateUIObject("SellBtn", canvasGO.transform);
+        SetRect(sellBtn, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(400, 0), new Vector2(120, 80));
+        sellBtn.AddComponent<Image>().color = new Color(0.6f, 0.2f, 0.2f);
+        var sellButton = sellBtn.AddComponent<Button>();
+
+        var sellTxt = CreateUIObject("SellText", sellBtn.transform).AddComponent<TextMeshProUGUI>();
+        sellTxt.text = "VENDRE";
+        sellTxt.fontSize = 20;
+        sellTxt.alignment = TextAlignmentOptions.Center;
+        sellTxt.fontStyle = FontStyles.Bold;
+        SetRect(sellTxt.gameObject, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+
+        sellButton.onClick.AddListener(() =>
+        {
+            playerInventory.SellAllFish(playerMoney);
+        });
+
         // 4. Titre Principal
         GameObject title = CreateUIObject("Title", mainPanel.transform);
         SetRect(title, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0, -50), new Vector2(600, 60));
@@ -78,7 +97,7 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
         // 5. Scroll View (Indispensable pour la propreté)
         GameObject scrollView = CreateUIObject("ScrollView", mainPanel.transform);
         SetRect(scrollView, Vector2.zero, Vector2.one, new Vector2(0, -50), new Vector2(-40, -120));
-        
+
         GameObject viewport = CreateUIObject("Viewport", scrollView.transform);
         SetRect(viewport, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
         viewport.AddComponent<RectMask2D>();
@@ -86,14 +105,14 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
         GameObject content = CreateUIObject("Content", viewport.transform);
         SetRect(content, new Vector2(0, 1), new Vector2(1, 1), Vector2.zero, new Vector2(0, 400));
         content.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 1);
-        
+
         var layout = content.AddComponent<VerticalLayoutGroup>();
         layout.spacing = 15;
         layout.padding = new RectOffset(15, 15, 15, 15);
         layout.childControlHeight = false;
         layout.childForceExpandHeight = false;
         content.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
-        
+
         contentContainer = content.transform;
         RefreshUpgrades();
     }
@@ -121,7 +140,7 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
         // Zone de texte (au milieu) - espace très réduit avec l'icône
         GameObject textZone = CreateUIObject("TextZone", card.transform);
         SetRect(textZone, new Vector2(0, 0), new Vector2(1, 1), new Vector2(8, 0), new Vector2(-280, -10));
-        
+
         var nameTxt = CreateUIObject("Name", textZone.transform).AddComponent<TextMeshProUGUI>();
         nameTxt.text = upg.Name;
         nameTxt.fontSize = 22;
@@ -142,7 +161,7 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
         SetRect(btnGo, new Vector2(1, 0.5f), new Vector2(1, 0.5f), new Vector2(-80, 0), new Vector2(130, 80));
         btnGo.AddComponent<Image>().color = new Color(0.2f, 0.45f, 0.25f);
         var btn = btnGo.AddComponent<Button>();
-        
+
         var priceTxt = CreateUIObject("Price", btnGo.transform).AddComponent<TextMeshProUGUI>();
         priceTxt.text = $"<b>{upg.Price}$</b>\n<size=14>NV. {upg.Level}</size>";
         priceTxt.fontSize = 22;
@@ -151,7 +170,7 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
 
         btn.onClick.AddListener(() =>
         {
-            if(playerMoney.GetMoney() < upg.Price)
+            if (playerMoney.GetMoney() < upg.Price)
             {
                 Debug.Log("Pas assez d'argent pour acheter cette amélioration !");
                 if (notEnoughMoneySound != null)
@@ -163,7 +182,7 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
 
             playerMoney.RemoveMoney(upg.Price);
             upg.OnUpgrade();
-            
+
             if (upgradeSound != null)
             {
                 AudioSource.PlayClipAtPoint(upgradeSound, Camera.main.transform.position);
@@ -171,6 +190,8 @@ public class UpgradesPanel : MonoBehaviour, IInteractable
 
             RefreshUpgrades();
         });
+
+        
     }
 
     GameObject CreateUIObject(string name, Transform parent)

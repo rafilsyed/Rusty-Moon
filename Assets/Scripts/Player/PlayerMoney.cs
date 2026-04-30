@@ -3,7 +3,7 @@ using UnityEngine;
 
 public partial class PlayerMoney : MonoBehaviour
 {
-    [SerializeField] private int money = 500;
+    [SerializeField] private int money = 0;
     public TextMeshProUGUI moneyText; 
 
     public void Start()
