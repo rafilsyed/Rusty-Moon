@@ -124,6 +124,7 @@ MonoBehaviour:
   vitesseDeLancer: 3
   castPower: 2
   castSound: {fileID: 8300000, guid: fbe9b599e96ab1f4a8ca6bbcb79fac2c, type: 3}
+  reelSound: {fileID: 8300000, guid: 96f69f79881aa994bb293c95de5130e2, type: 3}
   volume: 1
   hookPrefab: {fileID: 3225350427148339798, guid: 0b4bfc2a1b893234ea02dd35921f0870, type: 3}
   spawnPoint: {fileID: 7970125798145105745}

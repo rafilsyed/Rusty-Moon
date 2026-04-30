@@ -10,6 +10,7 @@ public class FishingRodController : MonoBehaviour
     [Header("Réglages Pêche")]
     public float castPower = 15f; 
     public AudioClip castSound;
+    public AudioClip reelSound;    
     public float volume = 1f;
 
     [Header("Lancer d'Hameçon")]
@@ -53,9 +54,13 @@ public class FishingRodController : MonoBehaviour
         }
 
         transform.localRotation = rotationInitiale * Quaternion.Euler(angleActuel, 0f, 0f);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            RamenerLaLigne();
+        }
     }
 
-    // 👇 NOUVELLE FONCTION : Gère le fil à chaque image
     void LateUpdate()
     {
         if (filDePeche != null)
@@ -93,9 +98,15 @@ public class FishingRodController : MonoBehaviour
 
         if (hookPrefab != null && spawnPoint != null)
         {
-            if (hameconActuel != null)
+            BaitBehavior[] tousLesHamecons = Object.FindObjectsByType<BaitBehavior>(FindObjectsSortMode.None);
+            
+            // On les détruit tous un par un
+            foreach (BaitBehavior ancienHamecon in tousLesHamecons)
             {
-                Destroy(hameconActuel);
+                if (ancienHamecon != null)
+                {
+                    Destroy(ancienHamecon.gameObject);
+                }
             }
 
             hameconActuel = Instantiate(hookPrefab, spawnPoint.position, spawnPoint.rotation);
@@ -106,6 +117,30 @@ public class FishingRodController : MonoBehaviour
                 Vector3 directionLancer = Camera.main.transform.forward + (Vector3.up * 0.3f);
                 hookRb.AddForce(directionLancer.normalized * castPower, ForceMode.Impulse);
             }
+        }
+    }
+
+    private void RamenerLaLigne()
+    {
+        if (hameconActuel != null)
+        {
+            Destroy(hameconActuel);
+            
+            hameconActuel = null; 
+
+            if (reelSound != null)
+            {
+                GameObject temp = new GameObject("ReelSoundTemp");
+                AudioSource source = temp.AddComponent<AudioSource>();
+                source.clip = reelSound;
+                source.volume = volume;
+                source.Play();
+                
+                // Le son est détruit une fois qu'il a fini de jouer
+                Destroy(temp, reelSound.length);
+            }
+
+            Debug.Log("Ligne ramenée !");
         }
     }
 }
