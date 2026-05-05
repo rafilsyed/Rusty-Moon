@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Plank
   m_EditorClassIdentifier: Assembly-CSharp::FiberItemData
   ID: 0
-  DisplayName: 
+  DisplayName: Planche
   Description: 
   Icon: {fileID: 21300000, guid: cd8fa4c6896acad4f8232fc1c5bbfeba, type: 3}
   MaxStackSize: 64
   itemPrefab: {fileID: 919132149155446097, guid: f9dc45da0de6c2c46bf15b7bb9429452, type: 3}
   handDisplayScale: 1
+  rotationOffsetDansLaMain: {x: 0, y: 0, z: 0}

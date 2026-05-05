@@ -2865,11 +2865,14 @@ MonoBehaviour:
   playerMovement: {fileID: 1604148489}
   playerInventory: {fileID: 1604148494}
   playerMoney: {fileID: 1604148498}
-  availableUpgrades:
-  - {fileID: 11400000, guid: 364e731baf7448148a5469be5f4341cf, type: 2}
-  - {fileID: 11400000, guid: b8a6614ce3954ab45b81625858178f56, type: 2}
-  - {fileID: 11400000, guid: c0ef3ff07efd65e4181c4d38809282e7, type: 2}
-  upgradeSound: {fileID: 8300000, guid: 3ba1ed6038a941548ab0a3a42029b19a, type: 3}
+  itemPrices:
+  - Item: {fileID: 11400000, guid: 58472828849a3184e8365c69cd3b42cd, type: 2}
+    Price: 10
+  - Item: {fileID: 11400000, guid: 526c76ad8a0567f408b362784ec96acb, type: 2}
+    Price: 15
+  - Item: {fileID: 11400000, guid: e27faf997e23ab941ae91d6b5556246a, type: 2}
+    Price: 30
+  buySound: {fileID: 8300000, guid: f847f138fb0c18f45b27d737647e7812, type: 3}
   notEnoughMoneySound: {fileID: 8300000, guid: d9af6d2712c60d44ebbd288cf3230a8e, type: 3}
 --- !u!65 &647930016
 BoxCollider:
