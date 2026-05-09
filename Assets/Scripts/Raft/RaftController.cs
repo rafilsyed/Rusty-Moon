@@ -1,38 +1,48 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))] // Force Unity à ajouter un Rigidbody s'il n'y en a pas
+[RequireComponent(typeof(Rigidbody))]
 public class RaftController : MonoBehaviour
 {
     [Header("Références")]
-    [Tooltip("Glisse ici l'objet Voile (l'enfant du radeau)")]
+    [Tooltip("Glisse ici l'objet Pivot_Voile")]
     public Transform voile; 
+    public GameObject visuelVoile; 
 
     [Header("Réglages de Navigation")]
-    public float forceDuVent = 10f; // La puissance qui pousse le radeau
+    public float forceDuVent = 10f; 
+    public bool voileActive = false; 
 
     private Rigidbody rbRaft;
 
     void Start()
     {
         rbRaft = GetComponent<Rigidbody>();
+
+        if (visuelVoile != null)
+        {
+            visuelVoile.SetActive(voileActive);
+        }
+    }
+
+    
+    public void ToggleVoile()
+    {
+        voileActive = !voileActive;
+
+        if (visuelVoile != null)
+        {
+            visuelVoile.SetActive(voileActive);
+        }
     }
 
     void FixedUpdate() 
     {
-        // On utilise FixedUpdate car on manipule la physique (Rigidbody)
-        if (voile != null)
+        if (voile != null && voileActive)
         {
-            // 1. On récupère la direction vers laquelle la voile pointe
             Vector3 directionPoussee = voile.forward;
-
-            // 2. SÉCURITÉ : On met le Y à zéro pour que le vent ne fasse pas s'envoler ou couler le radeau !
             directionPoussee.y = 0f;
-            
-            // On normalise pour que la force soit toujours égale, peu importe l'inclinaison de la voile
             directionPoussee.Normalize();
 
-            // 3. On pousse le radeau !
-            // On utilise ForceMode.Acceleration pour que le poids du radeau n'impacte pas trop la vitesse
             rbRaft.AddForce(directionPoussee * forceDuVent, ForceMode.Acceleration);
         }
     }

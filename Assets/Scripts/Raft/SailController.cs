@@ -1,29 +1,43 @@
 using UnityEngine;
-using UnityEngine.InputSystem; // Requis pour lire les touches A et E
+using UnityEngine.InputSystem; 
 
 public class SailController : MonoBehaviour
 {
     [Header("Réglages de la Voile")]
-    public float vitesseRotation = 45f; // Vitesse à laquelle la voile tourne
+    public float vitesseRotation = 45f; 
 
     private bool joueurProche = false;
+    private RaftController raftController; // NOUVEAU : Référence au radeau
+
+    void Start()
+    {
+        // Au démarrage, on cherche le script du radeau qui est sur l'objet Parent
+        raftController = GetComponentInParent<RaftController>();
+    }
 
     void Update()
     {
-        // On ne vérifie les touches que si le joueur est à côté de la voile
+        // On ne vérifie les touches que si le joueur est dans le Trigger
         if (joueurProche)
         {
-            // isPressed permet de tourner en continu tant que la touche est maintenue
             if (Keyboard.current.fKey.isPressed)
             {
-                // Tourne dans le sens horaire (vers la droite)
                 transform.Rotate(Vector3.up * vitesseRotation * Time.deltaTime);
             }
             
             if (Keyboard.current.qKey.isPressed)
             {
-                // Tourne dans le sens anti-horaire (vers la gauche)
                 transform.Rotate(Vector3.down * vitesseRotation * Time.deltaTime);
+            }
+
+            // 👇 NOUVEAU : On gère l'ouverture/fermeture de la voile ICI
+            if (Keyboard.current.tKey.wasPressedThisFrame)
+            {
+                if (raftController != null)
+                {
+                    // On donne l'ordre au radeau de changer l'état de la voile
+                    raftController.ToggleVoile();
+                }
             }
         }
     }

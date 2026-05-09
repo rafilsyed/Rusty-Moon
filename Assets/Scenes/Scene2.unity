@@ -2684,13 +2684,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533828484}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00982d9512f279f4683ee682eda9dbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RaftController
   voile: {fileID: 1163387259}
+  visuelVoile: {fileID: 2102118660}
   forceDuVent: 10
+  voileActive: 0
 --- !u!4 &541766601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4131062105692079671, guid: 53e1939cdeda3f04caaa240bfd830e5e, type: 3}
@@ -8841,6 +8843,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095708119}
   m_CullTransparentMesh: 1
+--- !u!1 &2102118660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3618709281219081420, guid: a389dc5583bd7f74c9f8d163cfb0da5c, type: 3}
+  m_PrefabInstance: {fileID: 3910135695423663089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2104624364
 GameObject:
   m_ObjectHideFlags: 0
