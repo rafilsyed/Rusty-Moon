@@ -4,11 +4,15 @@ using UnityEngine;
 public class AxeItemData : InventoryItemData
 {
     [Header("Réglages de la Hache")]
-    public float range = 3f; // La distance max pour toucher l'arbre
-    public int degatsDeCoupe = 1; // Combien de "coups" ça enlève à l'arbre
+    public float range = 3f; 
+    public int degatsDeCoupe = 1; 
     
-    [Header("Son de la Hache (Optionnel)")]
+    [Header("Son dans le vide")]
     public AudioClip swingSound;
+
+    [Header("Temps de recharge (Cooldown)")]
+    public float tempsEntreChaqueCoup = 1.2f; 
+    private float tempsDuProchainCoup = 0f;  
 
     public override bool UseItem()
     {
@@ -17,28 +21,42 @@ public class AxeItemData : InventoryItemData
 
     public override bool Attack()
     {
-
-        if (swingSound != null)
+    
+        if (Time.time < tempsDuProchainCoup)
         {
-            AudioSource.PlayClipAtPoint(swingSound, Camera.main.transform.position, 1f);
+            return false; 
         }
 
-  
-        Camera cam = Camera.main;
-        if (cam == null) return false;
 
+        tempsDuProchainCoup = Time.time + tempsEntreChaqueCoup;
+
+
+
+        Camera cam = Camera.main;
+        if (cam != null)
+        {
+            Animator itemAnimator = cam.GetComponentInChildren<Animator>();
+            if (itemAnimator != null)
+            {
+                itemAnimator.SetTrigger("Attack");
+            }
+        }
+
+        if (swingSound != null && cam != null)
+        {
+            AudioSource.PlayClipAtPoint(swingSound, cam.transform.position, 0.5f);
+        }
+
+
+        if (cam == null) return false;
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         RaycastHit hit;
 
-
         if (Physics.Raycast(ray, out hit, range))
         {
-
             ArbreVivant arbre = hit.collider.GetComponent<ArbreVivant>();
-            
             if (arbre != null)
             {
-
                 arbre.RecevoirCoup(degatsDeCoupe);
                 return true;
             }
