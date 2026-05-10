@@ -2609,6 +2609,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506704931}
   m_CullTransparentMesh: 1
+--- !u!1 &516501655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 516501656}
+  - component: {fileID: 516501657}
+  m_Layer: 6
+  m_Name: FishingRodRecipe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &516501656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516501655}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1815594913}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &516501657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516501655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5399028147b0841a1984e36f082daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CraftRecipe
+  ResultItem: {fileID: 11400000, guid: ad02bbe4bfd0f3e4ba0539f2933af8db, type: 2}
+  ResultQuantity: 1
+  Requirements:
+  - Item: {fileID: 11400000, guid: 526c76ad8a0567f408b362784ec96acb, type: 2}
+    Quantity: 3
+  - Item: {fileID: 11400000, guid: e27faf997e23ab941ae91d6b5556246a, type: 2}
+    Quantity: 3
+  playerInventory: {fileID: 1604148494}
 --- !u!1001 &519588440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6538,6 +6590,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4131062105692079671, guid: 53e1939cdeda3f04caaa240bfd830e5e, type: 3}
   m_PrefabInstance: {fileID: 1532919633}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1536583214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1536583215}
+  - component: {fileID: 1536583216}
+  m_Layer: 6
+  m_Name: FiberRecipe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1536583215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536583214}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1815594913}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1536583216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536583214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5399028147b0841a1984e36f082daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CraftRecipe
+  ResultItem: {fileID: 11400000, guid: 58472828849a3184e8365c69cd3b42cd, type: 2}
+  ResultQuantity: 9
+  Requirements:
+  - Item: {fileID: 11400000, guid: 526c76ad8a0567f408b362784ec96acb, type: 2}
+    Quantity: 1
+  playerInventory: {fileID: 1604148494}
 --- !u!1001 &1577561599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6913,7 +7015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5a9c261957366438a4e771de5e7980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoney
-  money: 100
+  money: 0
   moneyText: {fileID: 1756577861}
 --- !u!1001 &1605770759
 PrefabInstance:
@@ -7654,10 +7756,16 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 400000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1536583215}
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 949702574}
     - targetCorrespondingSourceObject: {fileID: 400000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
       insertIndex: -1
       addedObject: {fileID: 224704481}
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 516501656}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
       insertIndex: -1
