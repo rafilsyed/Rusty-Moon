@@ -2866,6 +2866,9 @@ MonoBehaviour:
     Price: 15
   - Item: {fileID: 11400000, guid: e27faf997e23ab941ae91d6b5556246a, type: 2}
     Price: 30
+  - Item: {fileID: 11400000, guid: 3b5be4134524dcd46b20db9c0bdf1385, type: 2}
+    Price: 100
+  sealPrefab: {fileID: 986146962}
   buySound: {fileID: 8300000, guid: f847f138fb0c18f45b27d737647e7812, type: 3}
   notEnoughMoneySound: {fileID: 8300000, guid: d9af6d2712c60d44ebbd288cf3230a8e, type: 3}
 --- !u!65 &647930016
@@ -6910,7 +6913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5a9c261957366438a4e771de5e7980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoney
-  money: 0
+  money: 100
   moneyText: {fileID: 1756577861}
 --- !u!1001 &1605770759
 PrefabInstance:

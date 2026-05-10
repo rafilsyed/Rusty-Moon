@@ -11,6 +11,7 @@ public class ShopPanel : MonoBehaviour, IInteractable
     [SerializeField] private PlayerInventoryHolder playerInventory;
     [SerializeField] private PlayerMoney playerMoney;
     [SerializeField] private List<ItemPrice> itemPrices = new();
+    [SerializeField] private GameObject sealPrefab;
 
     public UnityAction<IInteractable> OnInteractionComplete { get; set; }
 
@@ -23,6 +24,11 @@ public class ShopPanel : MonoBehaviour, IInteractable
     {
         public InventoryItemData Item;
         public int Price;
+    }
+
+    public void Start()
+    {
+        if (sealPrefab != null) sealPrefab.SetActive(false);
     }
 
     public void Interact(Interactor interactor, out bool interactSuccessful)
@@ -94,7 +100,7 @@ public class ShopPanel : MonoBehaviour, IInteractable
         Button btn = btnGO.AddComponent<Button>();
         btnGO.AddComponent<Image>().color = Color.white;
         btnGO.GetComponent<RectTransform>().sizeDelta = new Vector2(380, 50);
-    
+
         Sprite sprite = ip.Item.Icon;
         if (sprite != null)
         {
@@ -160,7 +166,15 @@ public class ShopPanel : MonoBehaviour, IInteractable
         if (playerMoney.GetMoney() >= ip.Price)
         {
             playerMoney.RemoveMoney(ip.Price);
-            playerInventory.AddToInventory(ip.Item, 1);
+            if (ip.Item is SealItemData sealData)
+            {
+                sealPrefab.SetActive(true);
+            }
+            else
+            {
+                playerInventory.AddToInventory(ip.Item, 1);
+            }
+
             if (buySound) AudioSource.PlayClipAtPoint(buySound, Camera.main.transform.position);
             Debug.Log($"Bought {ip.Item.DisplayName}");
         }
