@@ -12,7 +12,12 @@ public class AxeItemData : InventoryItemData
 
     [Header("Temps de recharge (Cooldown)")]
     public float tempsEntreChaqueCoup = 1.2f; 
-    private float tempsDuProchainCoup = 0f;  
+    private float tempsDuProchainCoup = 0f;   
+
+    private void OnEnable()
+    {
+        tempsDuProchainCoup = 0f;
+    }
 
     public override bool UseItem()
     {
@@ -21,7 +26,7 @@ public class AxeItemData : InventoryItemData
 
     public override bool Attack()
     {
-    
+
         if (Time.time < tempsDuProchainCoup)
         {
             return false; 
@@ -35,6 +40,7 @@ public class AxeItemData : InventoryItemData
         Camera cam = Camera.main;
         if (cam != null)
         {
+
             Animator itemAnimator = cam.GetComponentInChildren<Animator>();
             if (itemAnimator != null)
             {
@@ -42,18 +48,20 @@ public class AxeItemData : InventoryItemData
             }
         }
 
+
         if (swingSound != null && cam != null)
         {
             AudioSource.PlayClipAtPoint(swingSound, cam.transform.position, 0.5f);
         }
 
-
         if (cam == null) return false;
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         RaycastHit hit;
 
+
         if (Physics.Raycast(ray, out hit, range))
         {
+
             ArbreVivant arbre = hit.collider.GetComponent<ArbreVivant>();
             if (arbre != null)
             {

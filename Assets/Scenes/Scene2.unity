@@ -1058,6 +1058,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8678967193195117617, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
+      propertyPath: premierSonImpact
+      value: 
+      objectReference: {fileID: 8300000, guid: 14c15e7ab5143004bb284fc5d9ff421f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4611,6 +4615,14 @@ PrefabInstance:
     - target: {fileID: 5705539758440290059, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8678967193195117617, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
+      propertyPath: premierSonImpact
+      value: 
+      objectReference: {fileID: 8300000, guid: 14c15e7ab5143004bb284fc5d9ff421f, type: 3}
+    - target: {fileID: 8678967193195117617, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
+      propertyPath: delaiEntreLesSons
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
