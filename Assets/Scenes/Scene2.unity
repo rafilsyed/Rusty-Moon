@@ -5260,7 +5260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WinController
   player: {fileID: 1604148488}
   endIsland: {fileID: 396926651}
-  winSound: {fileID: 8300000, guid: a0ad92db0fb0e0d40b3bd0e4e93abafd, type: 3}
+  winSound: {fileID: 8300000, guid: f86cafd544e301847aae6646e6fc341d, type: 3}
 --- !u!4 &1163387259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2620595905557618574, guid: a389dc5583bd7f74c9f8d163cfb0da5c, type: 3}
@@ -6866,6 +6866,7 @@ GameObject:
   - component: {fileID: 1604148496}
   - component: {fileID: 1604148497}
   - component: {fileID: 1604148498}
+  - component: {fileID: 1604148499}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -6896,6 +6897,7 @@ MonoBehaviour:
   defaultHeight: 2
   crouchHeight: 1
   crouchSpeed: 3
+  playerFoodLevel: {fileID: 1604148496}
   isTrapped: 0
 --- !u!143 &1604148490
 CharacterController:
@@ -7043,8 +7045,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5a9c261957366438a4e771de5e7980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMoney
-  money: 0
+  money: 1000
   moneyText: {fileID: 1756577861}
+--- !u!114 &1604148499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604148488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c68faabec909804d9590cd6bb1ec0b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::tp
 --- !u!1001 &1605770759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7745,11 +7759,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 49.362343
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7757,11 +7771,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7769,7 +7783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1d402e25e58b8d144a8cee4a12633996, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

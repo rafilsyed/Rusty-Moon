@@ -20,4 +20,8 @@ MonoBehaviour:
   itemPrefab: {fileID: 223122239559056999, guid: e844d613e77d6db4a971b96e8a5a062d, type: 3}
   handDisplayScale: 1
   rotationOffsetDansLaMain: {x: 0, y: 0, z: 0}
+  foodValue: 20
   soldPrice: 100
+  eatDuration: 2
+  eatSound: {fileID: 8300000, guid: 3ffdabe53b314884c961b61966c2ab9b, type: 3}
+  volume: 1

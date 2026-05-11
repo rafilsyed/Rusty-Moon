@@ -71,7 +71,7 @@ public class PlayerHand : MonoBehaviour
         }
     }
 
-    public void StartEating(float duration, FoodItemData foodItem)
+    public void StartEating(float duration, InventoryItemData foodItem)
     {
         if (!eating)
         {

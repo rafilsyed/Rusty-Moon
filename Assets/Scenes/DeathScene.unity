@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37697c7a5af4ef94d91f31229b371f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathController
-  deathMusic: {fileID: 8300000, guid: 276e4c95f60e698428b8b74a607336f8, type: 3}
+  deathMusic: {fileID: 8300000, guid: f65fca06567a71b4b9061c9da2b14efb, type: 3}
 --- !u!82 &2055296912
 AudioSource:
   m_ObjectHideFlags: 0

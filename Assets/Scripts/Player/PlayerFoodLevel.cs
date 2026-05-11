@@ -7,7 +7,7 @@ public class PlayerFoodLevel : MonoBehaviour
 
     public float maxFoodLevel = 100f;
     public float currentFoodLevel;
-    public float foodDepletionRate = 10f;
+    public float foodDepletionRate = 15f;
 
     void Start()
     {

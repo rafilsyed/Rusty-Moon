@@ -5,8 +5,8 @@ public class FoodItemData : InventoryItemData
 {
     [SerializeField] private float foodValue;
     [SerializeField] private float eatDuration = 2f;
-    public AudioClip eatSound;
-    public float volume = 1f;
+    [SerializeField] private AudioClip eatSound;
+    [SerializeField] private float volume = 1f;
 
     public override bool UseItem()
     {

@@ -24,7 +24,7 @@ public class ArbreVivant : MonoBehaviour
         StartCoroutine(JouerSonsEnSequence());
 
 
-        PlayerInventoryHolder inventaireJoueur = FindObjectOfType<PlayerInventoryHolder>();
+        PlayerInventoryHolder inventaireJoueur = FindAnyObjectByType<PlayerInventoryHolder>();
         if (inventaireJoueur != null && boisDonne != null)
         {
             inventaireJoueur.AddToInventory(boisDonne, quantiteParCoup);

@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public float crouchHeight = 1f;
     public float crouchSpeed = 3f;
 
+    [SerializeField] private PlayerFoodLevel playerFoodLevel;
+
     // --- NOUVEAU : Variable pour savoir si on est dans le nuage ---
     [HideInInspector] 
     public bool isTrapped = false;
@@ -44,6 +46,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        moveSpeed = playerFoodLevel.GetFoodLevelPercentage() * 6f;
+        runSpeed = playerFoodLevel.GetFoodLevelPercentage() * 12f;
+
         // 1. GESTION DE LA CAMÉRA (Toujours active même dans le nuage)
         if (canMove)
         {
