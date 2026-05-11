@@ -5,6 +5,7 @@ public partial class PlayerMoney : MonoBehaviour
 {
     [SerializeField] private int money = 0;
     public TextMeshProUGUI moneyText; 
+    public TextMeshProUGUI moneyShadowText;
 
     public void Start()
     {
@@ -28,6 +29,10 @@ public partial class PlayerMoney : MonoBehaviour
         if (moneyText != null)
         {
             moneyText.text = "Argent: " + money + " $";
+        }
+        if (moneyShadowText != null)
+        {
+            moneyShadowText.text = "Argent: " + money + " $";
         }
     }
 
